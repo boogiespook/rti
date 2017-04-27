@@ -428,7 +428,11 @@ function checkVal(inNo) {
     var totalOps = o1 + o2 + o3 + o4 + o5
 
     var chartTitle = "DevOps Chart - " + customerName
-
+    var overall1 = (d1+o1)/2;
+    var overall2 = (d2+o2)/2;
+    var overall3 = (d3+o3)/2;
+    var overall4 = (d4+o4)/2;
+    var overall5 = (d5+o5)/2;
     
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 4);
@@ -452,7 +456,7 @@ function checkVal(inNo) {
                 pointBackgroundColor: window.chartColors.blue,
                 data: [o1,o2,o3,o4,o5]
 
-            },]
+            }]
         },
         options: {
             legend: {
@@ -669,8 +673,14 @@ $analysis = $recommendations = $weighting = $oWeight = $dWeight = $tWeights = ar
 
 if ($status == "Completed") {
 	$rhEmail = $_REQUEST['rhEmail'];
-	$region = $_REQUEST['region'];
-	$qq = "INSERT IGNORE INTO data (client,rhEmail,region,o1,o2,o3,o4,o5,d1,d2,d3,d4,d5,hash,date) VALUES ('$custName','$rhEmail','$region',$ops_arr[0],$ops_arr[1],$ops_arr[2],$ops_arr[3],$ops_arr[4],$dev_arr[0],$dev_arr[1],$dev_arr[2],$dev_arr[3],$dev_arr[4],'$md5',NOW())";
+	$country = $_REQUEST['country'];
+	$userId = $_REQUEST['id'];
+	if ($userId == "14") {
+	$dbTable = "test_data";
+	} else {
+	$dbTable = "data";
+	}
+	$qq = "INSERT IGNORE INTO $dbTable (client,rhEmail,country,o1,o2,o3,o4,o5,d1,d2,d3,d4,d5,hash,date) VALUES ('$custName','$rhEmail','$country',$ops_arr[0],$ops_arr[1],$ops_arr[2],$ops_arr[3],$ops_arr[4],$dev_arr[0],$dev_arr[1],$dev_arr[2],$dev_arr[3],$dev_arr[4],'$md5',NOW())";
 	$result = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
 }
 
@@ -1071,12 +1081,18 @@ $i++;
 </div>
 <button id="average-opener-ops">Average Comparison (Ops)</button>
 
-<button type="button" onclick="printPDF()">PDF Version</button>
+<a href="resultsOpen.php?<?php echo $_SERVER['QUERY_STRING'];  ?>" target="_blank"><input type="button" value="Printable Version"></a>
 
+
+<button type="button" onclick="printPDF()">PDF Version (Beta)</button>
+
+<!--
 <button id="open">Open Dialog box</button> 
 <div id="dialog" title="Basic dialog">
 <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
 </div>
+-->
+
 
 </div>
 <!-- end of main content div -->

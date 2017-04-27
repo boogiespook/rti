@@ -26,7 +26,7 @@ CREATE TABLE `data` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `client` varchar(50) NOT NULL,
   `rhEmail` varchar(50) NOT NULL,
-  `region` int(20) NOT NULL,
+  `country` int(20) NOT NULL,
   `o1` int(1) NOT NULL,
   `o2` int(1) NOT NULL,
   `o3` int(1) NOT NULL,
@@ -45,6 +45,36 @@ CREATE TABLE `data` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+
+--
+-- Table structure for table `test_data`
+--
+
+DROP TABLE IF EXISTS `test_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test_data` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `client` varchar(50) NOT NULL,
+  `rhEmail` varchar(50) NOT NULL,
+  `country` int(20) NOT NULL,
+  `o1` int(1) NOT NULL,
+  `o2` int(1) NOT NULL,
+  `o3` int(1) NOT NULL,
+  `o4` int(1) NOT NULL,
+  `o5` int(1) NOT NULL,
+  `d1` int(1) NOT NULL,
+  `d2` int(1) NOT NULL,
+  `d3` int(1) NOT NULL,
+  `d4` int(1) NOT NULL,
+  `d5` int(1) NOT NULL,
+  `hash` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `hash` (`hash`)
+) ENGINE=InnoDB AUTO_INCREMENT=322 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 
 --
