@@ -23,10 +23,10 @@ $error = false;
 
 //check if form is submitted
 if (isset($_POST['signup'])) {
-	$name = mysql_real_escape_string($_POST['name']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$password = mysql_real_escape_string($_POST['password']);
-	$cpassword = mysql_real_escape_string($_POST['cpassword']);
+	$name = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['name']);
+	$email = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['email']);
+	$password = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['password']);
+	$cpassword = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['cpassword']);
 	
 	//name can contain only alpha characters and space
 	if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
@@ -47,10 +47,9 @@ if (isset($_POST['signup'])) {
 	}
 	if (!$error) {
 		$qq = "INSERT INTO users(name,email,password,uuid) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "',uuid())	";
-		print $qq . "<br>";
 #print $aa . "<br>";
 #		if(mysql_query($qq) {
-		if(mysql_query("INSERT INTO users(name,email,password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
+		if(mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO users(name,email,password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
 			$successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
 		} else {
 			print $qq . "<br>";
