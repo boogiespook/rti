@@ -318,19 +318,6 @@ table {
   </script>
 
  
-<script>
- function printPDF () {
-      $.ajax({
-        url:"http://ec2-52-210-146-199.eu-west-1.compute.amazonaws.com/printPDF.php?" , //the page containing php script
-        type: "POST", //request type
-        success:function(result){
-        	var pdfURL = 'http://ec2-52-210-146-199.eu-west-1.compute.amazonaws.com/' + result; 
-			window.open('http://ec2-52-210-146-199.eu-west-1.compute.amazonaws.com/' + result, '_blank');
-//         alert(pdfURL);
-       }
-     });
- }
-</script>
 
 <script>
 $(document).ready(function() {
@@ -675,7 +662,7 @@ if ($status == "Completed") {
 	$rhEmail = $_REQUEST['rhEmail'];
 	$country = $_REQUEST['country'];
 	$userId = $_REQUEST['id'];
-	if ($userId == "14") {
+	if ($userId == "1") {
 	$dbTable = "test_data";
 	} else {
 	$dbTable = "data";
@@ -1083,8 +1070,6 @@ $i++;
 
 <a href="resultsOpen.php?<?php echo $_SERVER['QUERY_STRING'];  ?>" target="_blank"><input type="button" value="Printable Version"></a>
 
-
-<button type="button" onclick="printPDF()">PDF Version (Beta)</button>
 
 <!--
 <button id="open">Open Dialog box</button> 
