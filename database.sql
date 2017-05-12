@@ -26,7 +26,7 @@ CREATE TABLE `data` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `client` varchar(50) NOT NULL,
   `rhEmail` varchar(50) NOT NULL,
-  `country` int(20) NOT NULL,
+  `country` varchar(200) NOT NULL,
   `o1` int(1) NOT NULL,
   `o2` int(1) NOT NULL,
   `o3` int(1) NOT NULL,

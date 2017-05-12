@@ -339,7 +339,7 @@ table {
 <div id="docTitle">
 Red Hat Ready to Innovate</div>
 <h2>Client Recommendations Document</h2>
-Prepared for <?php echo $_GET['name']; ?>
+Prepared for <?php echo $_GET['client']; ?>
 <h3>Date: <?php echo date('l jS \of F Y') ?></h3>
 
 </center>
@@ -357,7 +357,7 @@ Prepared for <?php echo $_GET['name']; ?>
 <p>Do not forward or copy without written permission.</p>
 <h3>Confidentiality</h3>
 
-<p>This is a confidential document between Red Hat, Inc. and  <?php echo $_GET['name']; ?> (“Client”).</p>
+<p>This is a confidential document between Red Hat, Inc. and  <?php echo $_GET['client']; ?> (“Client”).</p>
 <p>All information supplied to the Client for the purpose of this project is to be considered Red Hat confidential.</p>
 
 <h3>Disclaimer</h3>
@@ -382,7 +382,7 @@ The Operate phase ensures that your Organisation is able to realise the true val
 
 
 <h1>RTI Output Summary</h1>
-<p>The spider chart below shows the levels attained by <?php echo $_GET['name']; ?> during the Ready To Innovate Assessment:
+<p>The spider chart below shows the levels attained by <?php echo $_GET['client']; ?> during the Ready To Innovate Assessment:
 
 
 <?php  
@@ -414,7 +414,7 @@ function getQueryVariable(variable)
        return(false);
 }    
 
-    var customerName = getQueryVariable("name")
+    var customerName = getQueryVariable("client")
     var customerNameNoSpaces = customerName.replace(/\s+/, "");
 
 
@@ -687,7 +687,7 @@ foreach( $url_qry_str as $param )
       $var =  explode('=', $param, 2);
       if(substr($var[0],0,1) == "o") { $ops_arr[]=ceil($var[1]); };
       if(substr($var[0],0,1) == "d") { $dev_arr[]=ceil($var[1]);};
-      if(substr($var[0],0,4) == "name") { $custName=urldecode($var[1]); };
+      if(substr($var[0],0,4) == "client") { $custName=urldecode($var[1]); };
       if(substr($var[0],0,6) == "status") { $status=urldecode($var[1]); };
     }
 
@@ -708,16 +708,6 @@ $areaWeighting = array(
 );
 
 $analysis = $recommendations = $weighting = $oWeight = $dWeight = $tWeights = array();
-
-
-if ($status == "Completed") {
-	$rhEmail = $_REQUEST['rhEmail'];
-#	$region = $_REQUEST['region'];
-#	$qq = "INSERT IGNORE INTO data (client,rhEmail,region,o1,o2,o3,o4,o5,d1,d2,d3,d4,d5,hash,date) VALUES ('$custName','$rhEmail','$region',$ops_arr[0],$ops_arr[1],$ops_arr[2],$ops_arr[3],$ops_arr[4],$dev_arr[0],$dev_arr[1],$dev_arr[2],$dev_arr[3],$dev_arr[4],'$md5',NOW())";
-#	$region = $_REQUEST['region'];
-	$qq = "INSERT IGNORE INTO data (client,rhEmail,o1,o2,o3,o4,o5,d1,d2,d3,d4,d5,hash,date) VALUES ('$custName','$rhEmail',$ops_arr[0],$ops_arr[1],$ops_arr[2],$ops_arr[3],$ops_arr[4],$dev_arr[0],$dev_arr[1],$dev_arr[2],$dev_arr[3],$dev_arr[4],'$md5',NOW())";
-	$result = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
-}
 
 for ($ii = 0; $ii < 5; $ii++) {
 	$lcArea=strtolower($areas[$ii]);
@@ -1145,11 +1135,5 @@ $i++;
 //saveHTMLDivs("priorities-dialog","priorities",customerNameNoSpaces);
 
 </script>
-<?php
-## Put all the relevant parts together in one doc ready for PDF
-$name = preg_replace('/\s+/', '', $_GET['name']);
-
-
-?>
 </body>
 </html>

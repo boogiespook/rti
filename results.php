@@ -346,13 +346,27 @@ date_default_timezone_set("Europe/London");
 include 'dbconnect.php';
 connectDB();
 
-#phpinfo();
+# Retrieve the data
+$hash = $_REQUEST['hash'];
+$qq = "SELECT * FROM data WHERE hash='".mysqli_real_escape_string($db, $hash)."'";
+$res = mysqli_query($db, $qq);
+$data_array = mysqli_fetch_assoc($res);
+
+$ops_arr = $dev_arr = array();
+
+foreach( $data_array as $var => $value )
+    {
+    	if($var=='date') continue;
+      if(substr($var[0],0,1) == "o") { $ops_arr[]=$value; };
+      if(substr($var[0],0,1) == "d") { $dev_arr[]=$value;};
+    }
+    
  ?>
       <div id="wrapper">
       <header>
 
       <center>
-      <h2>Ready to Innovate Assessment for <?php echo $_GET['name']; ?></h2>
+      <h2>Ready to Innovate Assessment for <?php echo $data_array['client']; ?></h2>
       </center>
       </header>
       
@@ -361,19 +375,8 @@ connectDB();
         <canvas id="canvas"></canvas>
     </div>
         <script>
-        
-function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return decodeURI(pair[1]);}
-       }
-       return(false);
-}    
 
-    var customerName = getQueryVariable("name")
+    var customerName = '<?php echo $data_array['client'] ?>'
     var customerNameNoSpaces = customerName.replace(/\s+/, "");
 
 
@@ -386,31 +389,19 @@ function checkVal(inNo) {
 	return outNo
 }
 
-    var d1 = checkVal(getQueryVariable("d1"))
-    var d2 = checkVal(getQueryVariable("d2"))
-    var d3 = checkVal(getQueryVariable("d3"))
-    var d4 = checkVal(getQueryVariable("d4"))
-    var d5 = checkVal(getQueryVariable("d5"))
+    var d1 = checkVal(<?php echo $data_array['d1'] ?>)
+    var d2 = checkVal(<?php echo $data_array['d2'] ?>)
+    var d3 = checkVal(<?php echo $data_array['d3'] ?>)
+    var d4 = checkVal(<?php echo $data_array['d4'] ?>)
+    var d5 = checkVal(<?php echo $data_array['d5'] ?>)
     
-//    var d1 = getQueryVariable("d1")
-//    var d2 = getQueryVariable("d2")
-//    var d3 = getQueryVariable("d3")
-//    var d4 = getQueryVariable("d4")
-//    var d5 = getQueryVariable("d5")
-
     var totalDev = d1 + d2 + d3 + d4 + d5
 
-    var o1 = checkVal(getQueryVariable("o1"))
-    var o2 = checkVal(getQueryVariable("o2"))
-    var o3 = checkVal(getQueryVariable("o3"))
-    var o4 = checkVal(getQueryVariable("o4"))
-    var o5 = checkVal(getQueryVariable("o5"))
-
-//    var o1 = getQueryVariable("o1")
-//    var o2 = getQueryVariable("o2")
-//    var o3 = getQueryVariable("o3")
-//    var o4 = getQueryVariable("o4")
-//    var o5 = getQueryVariable("o5")
+    var o1 = checkVal(<?php echo $data_array['o1'] ?>)
+    var o2 = checkVal(<?php echo $data_array['o2'] ?>)
+    var o3 = checkVal(<?php echo $data_array['o3'] ?>)
+    var o4 = checkVal(<?php echo $data_array['o4'] ?>)
+    var o5 = checkVal(<?php echo $data_array['o5'] ?>)
 
     var totalOps = o1 + o2 + o3 + o4 + o5
 
@@ -625,19 +616,6 @@ $workshopLinks = array(
 	"Microservices" => "<a target=_blank href='#'>Microservices : Design and Architecture</a>",
 );
 
-# Get all the URL vals
-$url_qry_str  = explode('&', $_SERVER['QUERY_STRING']);
-
-$md5 = md5($_SERVER['QUERY_STRING']);
-
-foreach( $url_qry_str as $param )
-    {
-      $var =  explode('=', $param, 2);
-      if(substr($var[0],0,1) == "o") { $ops_arr[]=ceil($var[1]); };
-      if(substr($var[0],0,1) == "d") { $dev_arr[]=ceil($var[1]);};
-      if(substr($var[0],0,4) == "name") { $custName=str_replace(array('&','<','>','/','\\','"',"'",'?','+'), '',urldecode($var[1])); };
-      if(substr($var[0],0,6) == "status") { $status=urldecode($var[1]); };
-    }
 
 $areas = array(
 	0 => "Automation",
@@ -656,20 +634,6 @@ $areaWeighting = array(
 );
 
 $analysis = $recommendations = $weighting = $oWeight = $dWeight = $tWeights = array();
-
-
-if ($status == "Completed") {
-	$rhEmail = $_REQUEST['rhEmail'];
-	$country = $_REQUEST['country'];
-	$userId = $_REQUEST['id'];
-	if ($userId == "1") {
-	$dbTable = "test_data";
-	} else {
-	$dbTable = "data";
-	}
-	$qq = "INSERT IGNORE INTO $dbTable (client,rhEmail,country,o1,o2,o3,o4,o5,d1,d2,d3,d4,d5,hash,date) VALUES ('$custName','$rhEmail','$country',$ops_arr[0],$ops_arr[1],$ops_arr[2],$ops_arr[3],$ops_arr[4],$dev_arr[0],$dev_arr[1],$dev_arr[2],$dev_arr[3],$dev_arr[4],'$md5',NOW())";
-	$result = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
-}
 
 for ($ii = 0; $ii < 5; $ii++) {
 	$lcArea=strtolower($areas[$ii]);
@@ -1068,7 +1032,16 @@ $i++;
 </div>
 <button id="average-opener-ops">Average Comparison (Ops)</button>
 
-<a href="resultsOpen.php?<?php echo $_SERVER['QUERY_STRING'];  ?>" target="_blank"><input type="button" value="Printable Version"></a>
+<?php
+// Temporary hack, pending refactoring of resultsOpen.php to fetch the results
+// from the DB and not reproducing the entire code
+$url_parts = array();
+foreach ($data_array as $key => $val) {
+	$url_parts[] = $key . '=' .urlencode($val);
+}
+$query_string = implode('&', $url_parts);
+?>
+<a href="resultsOpen.php?<?php echo $query_string ?>" target="_blank"><input type="button" value="Printable Version"></a>
 
 
 <!--
@@ -1104,7 +1077,7 @@ function saveHTMLDivs(divName,dataType,customer) {
 </script>
 <?php
 ## Put all the relevant parts together in one doc ready for PDF
-$name = preg_replace('/\s+/', '', $_GET['name']);
+$name = preg_replace('/\s+/', '', $data_array['client']);
 
 
 ?>
