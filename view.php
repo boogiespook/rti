@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-if ( (!isset($_GET['key'])) || ($_GET['key'] != "90794183b3ea2d4e18a36dbf12497180")) {
+if ( (!isset($_GET['key'])) || ($_GET['key'] != "90794183b1d497180")) {
 exit("Unable to connect to site");
 }
 
@@ -163,6 +163,7 @@ $result = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
 $prevClient = "QQQQQQQQQQQQQQQQQ";
 $oldRowD1 = $oldRowD2 = $oldRowD3 = $oldRowD4 = $oldRowD5 = $oldRowO1 = $oldRowO2 = $oldRowO3 = $oldRowO4 = $oldRowO5 = "X";
 while ($row = mysqli_fetch_assoc($result)) {
+	$hash = $row['hash'];
 	if ($row['client'] != $prevClient) { 
 		$col = "id=new";
 		$comment = "(Most Recent)";
@@ -182,7 +183,7 @@ echo "<tr $col><td> $row[client] $comment</td>
 <td>" . checkScores($oldRowD5,$row['d5'],$prevClient,$row['client']) . "</td>
 <td>" . checkScores($oldRowO5,$row['o5'],$prevClient,$row['client']) . "</td>
 <td>$row[date]</td>
-<td align=center><a target=_blank href='results.php?name=$row[client]&d1=$row[d1]&o1=$row[o1]&d2=$row[d2]&o2=$row[o2]&d3=$row[d3]&o3=$row[o3]&d4=$row[d4]&o4=$row[o4]&d5=$row[d5]&o5=$row[o5]'><img src=icon.png></a></td>
+<td align=center><a target=_blank href='results.php?hash=$hash'><img src=icon.png></a></td>
 </tr>";
 $prevClient = $row['client'];
 
