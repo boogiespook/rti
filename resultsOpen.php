@@ -331,6 +331,26 @@ table {
 </head>
 
 <body>
+<?php
+## Connect to the Database 
+include 'dbconnect.php';
+connectDB();
+$hash = $_REQUEST['hash'];
+$qq = "SELECT * FROM data WHERE hash='".mysqli_real_escape_string($db, $hash)."'";
+$res = mysqli_query($db, $qq);
+$data_array = mysqli_fetch_assoc($res);
+
+$ops_arr = $dev_arr = array();
+
+foreach( $data_array as $var => $value )
+    {
+    	if($var=='date') continue;
+      if(substr($var[0],0,1) == "o") { $ops_arr[]=$value; };
+      if(substr($var[0],0,1) == "d") { $dev_arr[]=$value;};
+    }
+
+?>
+
 <center>
 <img src="images/redHatTemplateHeader.jpg" alt="">
 <br><br><br><br>
@@ -339,7 +359,7 @@ table {
 <div id="docTitle">
 Red Hat Ready to Innovate</div>
 <h2>Client Recommendations Document</h2>
-Prepared for <?php echo $_GET['client']; ?>
+Prepared for <?php echo $data_array['client']; ?>
 <h3>Date: <?php echo date('l jS \of F Y') ?></h3>
 
 </center>
@@ -357,7 +377,7 @@ Prepared for <?php echo $_GET['client']; ?>
 <p>Do not forward or copy without written permission.</p>
 <h3>Confidentiality</h3>
 
-<p>This is a confidential document between Red Hat, Inc. and  <?php echo $_GET['client']; ?> (“Client”).</p>
+<p>This is a confidential document between Red Hat, Inc. and  <?php echo $data_array['client']; ?> (“Client”).</p>
 <p>All information supplied to the Client for the purpose of this project is to be considered Red Hat confidential.</p>
 
 <h3>Disclaimer</h3>
@@ -382,14 +402,14 @@ The Operate phase ensures that your Organisation is able to realise the true val
 
 
 <h1>RTI Output Summary</h1>
-<p>The spider chart below shows the levels attained by <?php echo $_GET['client']; ?> during the Ready To Innovate Assessment:
+<p>The spider chart below shows the levels attained by <?php echo $data_array['client']; ?> during the Ready To Innovate Assessment:
 
 
 <?php  
 date_default_timezone_set("Europe/London");
 ## Connect to the Database 
-include 'dbconnect.php';
-connectDB();
+#include 'dbconnect.php';
+#connectDB();
 
 #phpinfo();
  ?>
@@ -414,7 +434,7 @@ function getQueryVariable(variable)
        return(false);
 }    
 
-    var customerName = getQueryVariable("client")
+    var customerName = '<?php echo $data_array['client'] ?>'
     var customerNameNoSpaces = customerName.replace(/\s+/, "");
 
 
@@ -427,20 +447,19 @@ function checkVal(inNo) {
 	return outNo
 }
 
-    var d1 = checkVal(getQueryVariable("d1"))
-    var d2 = checkVal(getQueryVariable("d2"))
-    var d3 = checkVal(getQueryVariable("d3"))
-    var d4 = checkVal(getQueryVariable("d4"))
-    var d5 = checkVal(getQueryVariable("d5"))
+    var d1 = checkVal(<?php echo $data_array['d1']; ?>)
+    var d2 = checkVal(<?php echo $data_array['d2']; ?>)
+    var d3 = checkVal(<?php echo $data_array['d3']; ?>)
+    var d4 = checkVal(<?php echo $data_array['d4']; ?>)
+    var d5 = checkVal(<?php echo $data_array['d5']; ?>)
     
     var totalDev = d1 + d2 + d3 + d4 + d5
 
-    var o1 = checkVal(getQueryVariable("o1"))
-    var o2 = checkVal(getQueryVariable("o2"))
-    var o3 = checkVal(getQueryVariable("o3"))
-    var o4 = checkVal(getQueryVariable("o4"))
-    var o5 = checkVal(getQueryVariable("o5"))
-
+    var o1 = checkVal(<?php echo $data_array['o1']; ?>)
+    var o2 = checkVal(<?php echo $data_array['o2']; ?>)
+    var o3 = checkVal(<?php echo $data_array['o3']; ?>)
+    var o4 = checkVal(<?php echo $data_array['o4']; ?>)
+    var o5 = checkVal(<?php echo $data_array['o5']; ?>)
 
     var totalOps = o1 + o2 + o3 + o4 + o5
 
@@ -487,16 +506,7 @@ function checkVal(inNo) {
                 min: 0
               }
             },
-            			animation:{
-        			onComplete : function(){
-						var dataURL = canvas.toDataURL("image/png",1.0);
-						$.ajax({ 
-				   	 	type: "POST", 
-    						url: "chartSave.php",
-    						data: "spider="+dataURL+"&customer="+customerNameNoSpaces+"&chartType=spider",
-						});
-    			} 
-        }
+
     }
  }
     window.onload = function() {
@@ -535,17 +545,7 @@ var myBarChart = new Chart(ctx, {
         }
       }]
     },
-                			animation:{
-        			onComplete : function(){
-						var dataURLDev = myChartDev.toDataURL("image/png",1.0);
-						console.log(dataURLDev);
-						$.ajax({ 
-				   	 	type: "POST", 
-   						url: "chartSave.php",
-   						data: "spider="+dataURLDev+"&customer="+customerNameNoSpaces+"&chartType=comparisonDev",
-						});
-    			} 
-        },
+ 
                 title: {
             display: true,
             text: 'Comparison to Others (Development)'
@@ -586,17 +586,7 @@ var myBarChart2 = new Chart(ctx2, {
         }
       }]
     },
-                			animation:{
-        			onComplete : function(){
-						var dataURLOps = myChartOps.toDataURL("image/png",1.0);
-//						console.log(dataURLDev);
-						$.ajax({ 
-				   	 	type: "POST", 
-   						url: "chartSave.php",
-   						data: "spider="+dataURLOps+"&customer="+customerNameNoSpaces+"&chartType=comparisonOps",
-						});
-    			} 
-        },
+
                         title: {
             display: true,
             text: 'Comparison to Others (Operations)'
