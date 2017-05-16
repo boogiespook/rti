@@ -210,7 +210,7 @@ $userId = $_SESSION['usr_id'];
 <input class="w3-input" name="customerName" type="text" required>
 
     <br>
-<label class="w3-label w3-validate" >Red Hat Email Address</label>    
+<label class="w3-label w3-validate" >Email Address</label>    
 <input onfocusout="validateForm()" class="w3-input" name="rhEmail"  type="text" required>
     <br>
 <input type="hidden" name="userId" value="<?php echo $_SESSION['usr_id']; ?>">
@@ -468,20 +468,30 @@ $userId = $_SESSION['usr_id'];
     </fieldset>
     
   </p>
-<!--
-<label  class="w3-label w3-validate">Domain</label>
-<select name="domain">
-<option value=Government>Government</option>
-<option value=Finance>Finance</option>
-<option value=Retail>Retail</option>
-<option value=Manufacturing>Manufacturing</option>
-<option value=Health>Health</option>
-<option value=Media>Media</option>
-<option value=Telecoms>Telecoms</option>
-<option value=Energy>Energy</option>
+  <fieldset>
+    <label for="lob">Line of Business</label>
+    <select name="lob" id="lob">
+<option value="Agriculture">Agriculture</option>
+<option value="Business Services">Business Services</option>
+<option value="Construction & Real Estate">Construction & Real Estate</option>
+<option value="Education">Education</option>
+<option value="Energy, Raw Materials & Utilities">Energy, Raw Materials & Utilities</option>
+<option value="Finance">Finance</option>
+<option value="Government">Government</option>
+<option value="Healthcare">Healthcare</option>
+<option value="IT">IT</option>
+<option value="Leisure & Hospitality">Leisure & Hospitality</option>
+<option value="Libraries">Libraries</option>
+<option value="Manufacturing">Manufacturing</option>
+<option value="Media & Internet">Media & Internet</option>
+<option value="Non-Profit & Professional Orgs.">Non-Profit & Professional Orgs.</option>
+<option value="Retail">Retail</option>
+<option value="Software">Software</option>
+<option value="Telecommunications">Telecommunications</option>
+<option value="Transportation">Transportation</option>
+
 </select>
-  </p>
--->    
+</fieldset>   
     
   </div>
   <div id="tabs-3">
@@ -591,6 +601,8 @@ $userId = $_SESSION['usr_id'];
 <input class="w3-radio" type="radio" name="o5" id="radio-5" value="4"> <label>100% DevOps engineers</label><br>
   </fieldset> 
   </div>
+  
+
 <!--  <div id="tabs-8">
     <p>  <input type="submit" value="Submit">
 </p>
