@@ -474,7 +474,7 @@ function checkVal(inNo) {
     var config = {
         type: 'radar',
         data: {
-            labels: ["Automation", "Methodology", "Architecture", "Strategy", "Resources"],
+            labels: ["Automation", "Methodology", "Architecture", "Strategy", "Environment"],
             datasets: [{
                 label: "Dev",
                 backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
@@ -514,7 +514,7 @@ function checkVal(inNo) {
 
 var ctx = document.getElementById("myChartDev").getContext("2d");
 var data = {
-  labels: ["Automation", "Methodology", "Architecture", "Strategy", "Resources"],
+  labels: ["Automation", "Methodology", "Architecture", "Strategy", "Environment"],
   datasets: [{
     label: customerName,
     backgroundColor: "rgba(53, 177, 94, 1)",
@@ -555,7 +555,7 @@ var myBarChart = new Chart(ctx, {
 
 var ctx2 = document.getElementById("myChartOps").getContext("2d");
 var dataOps = {
-  labels: ["Automation", "Methodology", "Architecture", "Strategy", "Resources"],
+  labels: ["Automation", "Methodology", "Architecture", "Strategy", "Environment"],
   datasets: [{
     label: customerName,
     backgroundColor: "rgba(53, 177, 94, 1)",
@@ -624,8 +624,8 @@ $architecture_dev_array = array("Ad-hoc choice of application dev tools","Select
 $architecture_ops_array = array("Ad-hoc choice of future platforms","Selected vendor tech roadmap","Focus on maintaining existing infrastructure","Primary focus on new applications","Defined strategy for exsiting and new architectures");
 $strategy_dev_array = array("The business dictates requirements","Mature requirements gathering approach (e.g. Agile user stories)","MVP approach","Multiple projects against business needs","IT driven business innovation");
 $strategy_ops_array = array("Instances of negative business impact","Good functioning service operations (i.e few unscheduled outage, but slow to deploy)","Project based service offerings (i.e no unscheduled outages and rapid deployment)","Self sevice operations for development & the business","Transparent integration with project IT");
-$resources_dev_array = array("Traditional programming techniques with No agreed tools","Initial agile adoption with 1 backlog per team","Extended team collaboration. Common DevOps skills","Continous cross-team improvement and collaboration","100% DevOps projects and Full cross-functional teams");
-$resources_ops_array = array("Standard \"Unix-like\" skills & no scripting skills","Direct VM interaction, limited scripting","Dynamic, templated images","Fully automated & deployment skills","100% DevOps engineers");
+$environment_dev_array = array("Traditional programming techniques with No agreed tools","Initial agile adoption with 1 backlog per team","Extended team collaboration. Common DevOps skills","Continous cross-team improvement and collaboration","100% DevOps projects and Full cross-functional teams");
+$environment_ops_array = array("Standard \"Unix-like\" skills & no scripting skills","Direct VM interaction, limited scripting","Dynamic, templated images","Fully automated & deployment skills","100% DevOps engineers");
 
 $totalDev = $totalOps = 0;
 
@@ -686,7 +686,7 @@ $areas = array(
 	1 => "Methodology",
 	2 => "Architecture",
 	3 => "Strategy",
-	4 => "Resources"
+	4 => "Environment"
 );
 
 $areaWeighting = array(
@@ -914,30 +914,30 @@ array_push($recommendations,"Consider using tools such as OpenSCAP");
 array_push($workshops,$workshopLinks['OpenSCAP']);
 }
 
-# Assess Resources
-$opsResources = $ops_arr[4];
-$devResources = $dev_arr[4];
+# Assess Environment
+$opsEnvironment = $ops_arr[4];
+$devEnvironment = $dev_arr[4];
 $resourceRecommendations = "";
-$overallResources = $opsResources + $devResources;
-$resourcesAnalysis = "The overall skills rating for Resources is " . assessOverallVals($overallResources);
-if($opsResources > $devResources) {
-	$resourcesAnalysis .= " although the Operations team are more mature than the Development team.";
+$overallEnvironment = $opsEnvironment + $devEnvironment;
+$EnvironmentAnalysis = "The overall skills rating for Environment is " . assessOverallVals($overallEnvironment);
+if($opsEnvironment > $devEnvironment) {
+	$EnvironmentAnalysis .= " although the Operations team are more mature than the Development team.";
 	$resourceRecommendations .= "Agile Development Workshop";
-} elseif ($opsResources < $devResources) {
-	$resourcesAnalysis .= " although the Development team are more mature than the Operations team.";
+} elseif ($opsEnvironment < $devEnvironment) {
+	$EnvironmentAnalysis .= " although the Development team are more mature than the Operations team.";
 	$resourceRecommendations .= $workshopLinks['RHCE'];
 } else {
-	$resourcesAnalysis .= " and both teams have the same level of maturity.";
+	$EnvironmentAnalysis .= " and both teams have the same level of maturity.";
 	$resourceRecommendations .= "";
 	}
 
-if ($overallResources <= 2) {
+if ($overallEnvironment <= 2) {
 	$resourceRecommendations .= "Increase overall skills through an Open Innovation Lab</a>";
 }
-array_push($analysis,$resourcesAnalysis);
+array_push($analysis,$EnvironmentAnalysis);
 array_push($recommendations,$resourceRecommendations);
 
-if ($devResources < 2) {
+if ($devEnvironment < 2) {
 array_push($analysis,"Lack of DevOps Skills");
 array_push($recommendations,"Review current DevOps Skills");
 array_push($workshops,$workshopLinks['DevOpsReview']);
@@ -1032,14 +1032,14 @@ $allWorkshops = array(
 	  	"Methodology" => "Container Platforms",
 	  	"Architecture" => "Microservices",
 	  	"Strategy" => "Business Influence Mapping",
-	  	"Resources" => "Agile Development Workshop",
+	  	"Environment" => "Agile Development Workshop",
 	),
 	"Operations" => array (
 	  	"Automation" => "Adaptive SOE and Ansible Automation",
 	  	"Methodology" => "Innovation Labs (Ops Focus)",
 	  	"Architecture" => "Application Lifecycle Management",
 	  	"Strategy" => "Open Source Strategy",
-	  	"Resources" => "RH Training / GLS organisation review of skills",
+	  	"Environment" => "RH Training / GLS organisation review of skills",
 	)
 );
 

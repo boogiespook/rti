@@ -8,19 +8,12 @@ if(isset($_SESSION['usr_id'])!="") {
 //check if form is submitted
 if (isset($_POST['login'])) {
 
-#	$email = mysql_real_escape_string($con, $_POST['email']);
-#	$password = mysql_real_escape_string($con, $_POST['password']);
-#	$result = mysql_query($con, "SELECT * FROM users WHERE email = '" . $email. "' and password = '" . md5($password) . "'");
-#	$email = mysql_real_escape_string($_POST['email']);
-#	$password = mysql_real_escape_string($_POST['password']);
-#	$result = mysql_query("SELECT * FROM users WHERE email = '" . $email. "' and password = '" . md5($password) . "'");
 
 include 'dbconnect.php';
 connectDB();
 
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-#	$result = mysql_query("SELECT * FROM users WHERE email = '" . $email. "' and password = '" . md5($password) . "'");
 	$result = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM users WHERE email = '" . $email. "' and password = '" . md5($password) . "'");
 
 	if ($row = mysqli_fetch_array($result)) {
