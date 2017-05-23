@@ -121,6 +121,7 @@ h3 { color: #7c795d; font-family: 'overpass', sans-serif; font-size: 28px; font-
 				<li><a href="logout.php">Log Out</a></li>
 				<li><a href="blog">Blog</a></li>
 				<?php } else { ?>
+				<li><a href="register.php">Register</a></li>
 				<li><a href="login.php">Login</a></li>
 				<li><a href="blog">Blog</a></li>
 
