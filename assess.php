@@ -180,13 +180,14 @@ $userId = $_SESSION['usr_id'];
 
 <div id="tabs">
   <ul>
-    <li><a href="#tabs-1">Introduction</a></li>
-    <li><a href="#tabs-2">Details</a></li>
-    <li><a href="#tabs-3">Automation</a></li>
-    <li><a href="#tabs-4">Methodology</a></li>
-    <li><a href="#tabs-5">Architecture</a></li>
-    <li><a href="#tabs-6">Strategy</a></li>
-    <li><a href="#tabs-7">Environment</a></li>
+  <?php
+  $i = 1;
+  $areas = array("Introduction","Details","Automation","Methodology","Architecture","Strategy","Environment");
+  foreach ($areas as $area) {
+   print "<li><a href=\"#tabs-" . $i . "\">$area</a></li>";
+   $i++;  	
+  }
+?>
     <li><input type="submit" value="Submit"></li>
   </ul>
   <div id="tabs-1">
@@ -197,12 +198,21 @@ $userId = $_SESSION['usr_id'];
 </p>
 
 <p>
-<b>AIM</b>: To understand the maturity of your organisation across 5 outlined areas of interest
-</p>
-
-<p><b>AIM</b>: To identify next steps, using follow-up sessions from Red Hat Consulting to do in depth studies</p>
+By the end of this assessment you will:
+<ul>
+<li>    Understand the wider issues around Platform-as-a-Service and DevOps adoption in parallel with technical PoCs or pilots.
+    <li>Understand the maturity of your organization across five outlined areas of interest:
+    <ul>
+        <li>Automation
+        <li>Methodology
+        <li>Architecture
+        <li>Strategy
+        <li>Environment
+        </ul>
+    <li>Walk away with next steps and recommended follow-up sessions from Red Hat Consulting to dive deep into the challenges and opportunities that face your business.
+    </ul>
 <br>
-<p>To complete the assessment, please use the tabs and check the comment which better suits your environment.  Once complete, click "Submit" from the Submit Tab.</p>
+<p>To complete the assessment, please use the tabs moving from left to right.  Once complete, click "Submit".</p>
   </div>
   <div id="tabs-2">
     
@@ -497,117 +507,93 @@ $userId = $_SESSION['usr_id'];
   <div id="tabs-3">
 
 <div class="widget"> 
-  <fieldset>
-    <legend>Development</legend>
-<input class="w3-radio" type="radio" name="d1" id="radio-1" value="0" checked> <label>Ad-hoc tool selection</label><br>
-<input class="w3-radio" type="radio" name="d1" id="radio-1" value="1"> <label>Manual deployment (App + OS)</label><br>
-<input class="w3-radio" type="radio" name="d1" id="radio-1" value="2"> <label>CI/CD for non-production</label><br>
-<input class="w3-radio" type="radio" name="d1" id="radio-1" value="3"> <label>CD Pipelines capable of pushing to production</label><br>
-<input class="w3-radio" type="radio" name="d1" id="radio-1" value="4"> <label>> 90% of projects developed using agile development techniques</label><br>
+  
+<?php
 
-  </fieldset>
- 
-  <fieldset>
-    <legend>Operations</legend>
-<input class="w3-radio" type="radio" name="o1" id="radio-1" value="0" checked> <label>Core build for OS only Basic (manual) provisioning</label><br>
-<input class="w3-radio" type="radio" name="o1" id="radio-1" value="1"> <label>Patch & Release management (OS)</label><br>
-<input class="w3-radio" type="radio" name="o1" id="radio-1" value="2"> <label>QA staging process SOE</label><br>
-<input class="w3-radio" type="radio" name="o1" id="radio-1" value="3"> <label>Automated OS Builds</label><br>
-<input class="w3-radio" type="radio" name="o1" id="radio-1" value="4"> <label>> 90% of infrastructure is automatically provisioned and managed</label><br>
-  </fieldset> 
+function createQuestions($number,$area) {
+$string = file_get_contents("questions.json");
+$json = json_decode($string, true);
+
+$automation_dev_array = $json['development']['automation'];
+$automation_ops_array = $json['operations']['automation'];
+$methodology_dev_array = $json['development']['methodology'];
+$methodology_ops_array = $json['operations']['methodology'];
+$architecture_dev_array = $json['development']['architecture'];
+$architecture_ops_array = $json['operations']['architecture'];
+$strategy_dev_array = $json['development']['strategy'];
+$strategy_ops_array = $json['operations']['strategy'];
+$environment_dev_array = $json['development']['environment'];
+$environment_ops_array = $json['operations']['environment'];	
+$i=0;
+print "<fieldset>
+    <legend>Development</legend>";
+while( $i < 5) {
+if ($i == 0) {
+$ii = $i + 1;
+$check = "checked";
+} else {
+$check = "";
+}
+print "<input class=\"w3-radio\" type=\"radio\" name=\"d" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['development'][$area][$i] . "</label><br>";
+$i++;
+}
+print "  </fieldset>";
+
+
+# Rinse and repeat for Ops
+$i=0;
+print "  <fieldset>
+    <legend>Operations</legend>";
+
+while( $i < 5) {
+$ii = $i + 1;
+if ($i == 0) {
+$check = "checked";
+} else {
+$check = "";
+}
+print "<input class=\"w3-radio\" type=\"radio\" name=\"o" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['operations'][$area][$i] . "</label><br>";
+$i++;
+}
+print "  </fieldset> ";
+
+
+}
+# End of Function
+
+createQuestions("1","automation");
+
+
+?>    
  
 </div>    
     </p>
   </div>
   <div id="tabs-4">
-  <fieldset>
-    <legend>Development</legend>
-<input class="w3-radio" type="radio" name="d2" id="radio-2" value="0" checked> <label>No defined methodology</label><br>
-<input class="w3-radio" type="radio" name="d2" id="radio-2" value="1"> <label>Defined waterfall approach</label><br>
-<input class="w3-radio" type="radio" name="d2" id="radio-2" value="2"> <label>Limited agile development on new projects (not including operations)</label><br>
-<input class="w3-radio" type="radio" name="d2" id="radio-2" value="3"> <label>Agile development through to production & ops</label><br>
-<input class="w3-radio" type="radio" name="d2" id="radio-2" value="4"> <label>Full DevOps culture</label><br>
-
-  </fieldset>
- 
-  <fieldset>
-    <legend>Operations</legend>
-<input class="w3-radio" type="radio" name="o2" id="radio-2" value="0" checked> <label>Hosting/Mgmt Only</label><br>
-<input class="w3-radio" type="radio" name="o2" id="radio-2" value="1"> <label>Defined SLAs + ITIL</label><br>
-<input class="w3-radio" type="radio" name="o2" id="radio-2" value="2"> <label>Compliance & Security Auditing</label><br>
-<input class="w3-radio" type="radio" name="o2" id="radio-2" value="3"> <label>SOE</label><br>
-<input class="w3-radio" type="radio" name="o2" id="radio-2" value="4"> <label>Full DevOps culture</label><br>
-  </fieldset> 
-
+<?php
+createQuestions(2,"methodology");
+?> 
   </div>
   <div id="tabs-5">
-  <fieldset>
-    <legend>Development</legend>
-<input class="w3-radio" type="radio" name="d3" id="radio-3" value="0" checked> <label>Ad-hoc choice of application dev tools. Very limited understand of new architectures and approaches to application deployment</label><br>
-<input class="w3-radio" type="radio" name="d3" id="radio-3" value="1"> <label>Selected vendor tech roadmap. Initial understanding of new architectures and designs</label><br>
-<input class="w3-radio" type="radio" name="d3" id="radio-3" value="2"> <label>Iterative development of existing applications Limited legacy strategy and beginnings of new development architectures</label><br>
-<input class="w3-radio" type="radio" name="d3" id="radio-3" value="3"> <label>Focus on new platforms & limited legacy platforms. Well defined architecture for new development projects and operating models</label><br>
-<input class="w3-radio" type="radio" name="d3" id="radio-3" value="4"> <label>Holistic & defined overall development strategy. Good designs and architectures in place and under regular review</label><br>
-  </fieldset>
- 
-  <fieldset>
-    <legend>Operations</legend>
-<input class="w3-radio" type="radio" name="o3" id="radio-3" value="0" checked> <label>Ad-hoc choice of future platforms</label><br>
-<input class="w3-radio" type="radio" name="o3" id="radio-3" value="1"> <label>Selected vendor tech roadmap</label><br>
-<input class="w3-radio" type="radio" name="o3" id="radio-3" value="2"> <label>Focus on maintaining existing infrastructure</label><br>
-<input class="w3-radio" type="radio" name="o3" id="radio-3" value="3"> <label>Primary focus on new applications</label><br>
-<input class="w3-radio" type="radio" name="o3" id="radio-3" value="4"> <label>Defined strategy for existing and new architectures</label><br>
-
-  </fieldset> 
+<?php
+createQuestions(3,"architecture");
+?> 
 
 
   </div>
   <div id="tabs-6">
-  <fieldset>
-    <legend>Development</legend>
-<input class="w3-radio" type="radio" name="d4" id="radio-4" value="0" checked> <label>The business dictates requirements, strategy and deliverables</label><br>
-<input class="w3-radio" type="radio" name="d4" id="radio-4" value="1"> <label>Mature requirements gathering approach (e.g. Agile user stories)</label><br>
-<input class="w3-radio" type="radio" name="d4" id="radio-4" value="2"> <label>Minimal Viable Product approach</label><br>
-<input class="w3-radio" type="radio" name="d4" id="radio-4" value="3"> <label>Multiple projects against business needs</label><br>
-<input class="w3-radio" type="radio" name="d4" id="radio-4" value="4"> <label>IT driven business innovation. IT working directly with business requirements.</label><br>
-  </fieldset>
- 
-  <fieldset>
-    <legend>Operations</legend>
-<input class="w3-radio" type="radio" name="o4" id="radio-4" value="0" checked> <label>Instances of negative business impact</label><br>
-<input class="w3-radio" type="radio" name="o4" id="radio-4" value="1"> <label>Good functioning service operations (i.e few unscheduled outage but slow to deploy)</label><br>
-<input class="w3-radio" type="radio" name="o4" id="radio-4" value="2"> <label>Project based service offerings (i.e no unscheduled outages and rapid deployment)</label><br>
-<input class="w3-radio" type="radio" name="o4" id="radio-4" value="3"> <label>Self sevice operations for development & the business</label><br>
-<input class="w3-radio" type="radio" name="o4" id="radio-4" value="4"> <label>Transparent integration with project IT</label><br>
-  </fieldset> 
+
+<?php
+createQuestions(4,"strategy");
+?> 
   </div>
   <div id="tabs-7">
-  <fieldset>
-    <legend>Development</legend>
-<input class="w3-radio" type="radio" name="d5" id="radio-5" value="0" checked> <label>Traditional programming techniques with No agreed tools</label><br>
-<input class="w3-radio" type="radio" name="d5" id="radio-5" value="1"> <label>Initial agile adoption with 1 backlog per team</label><br>
-<input class="w3-radio" type="radio" name="d5" id="radio-5" value="2"> <label>Extended team collaboration. Common DevOps skills</label><br>
-<input class="w3-radio" type="radio" name="d5" id="radio-5" value="3"> <label>Continous cross-team improvement and collaboration</label><br>
-<input class="w3-radio" type="radio" name="d5" id="radio-5" value="4"> <label>100% DevOps projects with Full cross-functional teams</label><br>
-
-  </fieldset>
- 
-  <fieldset>
-    <legend>Operations</legend>
-<input class="w3-radio" type="radio" name="o5" id="radio-5" value="0" checked> <label>Standard Unix-like skills & no scripting skills</label><br>
-<input class="w3-radio" type="radio" name="o5" id="radio-5" value="1"> <label>Direct VM interaction but limited scripting and manual interaction.</label><br>
-<input class="w3-radio" type="radio" name="o5" id="radio-5" value="2"> <label>Dynamic templated images</label><br>
-<input class="w3-radio" type="radio" name="o5" id="radio-5" value="3"> <label>Fully automated & deployment skills</label><br>
-<input class="w3-radio" type="radio" name="o5" id="radio-5" value="4"> <label>100% DevOps engineers</label><br>
-  </fieldset> 
-  </div>
   
 
-<!--  <div id="tabs-8">
-    <p>  <input type="submit" value="Submit">
-</p>
+<?php
+createQuestions(5,"environment");
+?>
   </div>
--->
 </div>
 
 </form>

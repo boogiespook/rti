@@ -47,12 +47,9 @@ if (isset($_POST['signup'])) {
 	}
 	if (!$error) {
 		$qq = "INSERT INTO users(name,email,password,uuid) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "',uuid())	";
-#print $aa . "<br>";
-#		if(mysql_query($qq) {
 		if(mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO users(name,email,password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
 			$successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
 		} else {
-			print $qq . "<br>";
 			$errormsg = "Error in registering...Please try again later!";
 		}
 	}
