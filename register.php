@@ -15,6 +15,7 @@ if(isset($_SESSION['usr_id'])) {
 	header("Location: index.php");
 }
 
+require_once 'securimage/securimage.php';
 include 'dbconnect.php';
 connectDB();
 
@@ -45,6 +46,15 @@ if (isset($_POST['signup'])) {
 		$error = true;
 		$cpassword_error = "Password and Confirm Password doesn't match";
 	}
+
+
+    $image = new Securimage();
+    if ($image->check($_POST['captcha_code']) != true) {
+	   $error = true;
+	   $captcha_error = "Captcha entry incorrect";
+    }
+	
+	
 	if (!$error) {
 		$qq = "INSERT INTO users(name,email,password,uuid) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "',uuid())	";
 		if(mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO users(name,email,password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
@@ -117,6 +127,10 @@ if (isset($_POST['signup'])) {
 						<input type="password" name="cpassword" placeholder="Confirm Password" required class="form-control" />
 						<span class="text-danger"><?php if (isset($cpassword_error)) echo $cpassword_error; ?></span>
 					</div>
+    <div>
+        <?php echo Securimage::getCaptchaHtml() ?>
+        						<span class="text-danger"><?php if (isset($captcha_error)) echo "<br>$captcha_error"; ?></span>
+    </div>
 
 					<div class="form-group">
 						<input type="submit" name="signup" value="Sign Up" class="btn btn-primary" />
