@@ -1,75 +1,74 @@
 <?php
 session_start();
 
-function generate_my_uuid() {
-	return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
-		mt_rand( 0, 0xffff ),
-		mt_rand( 0, 0x0fff ) | 0x4000,
-		mt_rand( 0, 0x3fff ) | 0x8000,
-		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
-	);
-}
-
-if(isset($_SESSION['usr_id'])) {
+if(!isset($_SESSION['usr_id'])) {
 	header("Location: index.php");
 }
 
-require_once 'securimage/securimage.php';
 include 'dbconnect.php';
 connectDB();
 
 //set validation error flag as false
 $error = false;
 
-//check if form is submitted
+//check all details
 if (isset($_POST['signup'])) {
-	$name = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['name']);
 	$email = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['email']);
 	$password = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['password']);
-	$cpassword = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['cpassword']);
-	
+	$npassword = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['npassword']);
+	$cnpassword = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $_POST['cnpassword']);
 	//name can contain only alpha characters and space
-	if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
-		$error = true;
-		$name_error = "Name must contain only alphabets and space";
-	}
+#	if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
+#		$error = true;
+#		$name_error = "Name must contain only alphabets and space";
+#	}
 #	if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
 #		$error = true;
 #		$email_error = "Please Enter Valid Email ID";
 #	}
-	if(strlen($password) < 6) {
+	if(strlen($npassword) < 6) {
 		$error = true;
-		$password_error = "Password must be minimum of 6 characters";
+		$npassword_error = "Password must be minimum of 6 characters";
 	}
-	if($password != $cpassword) {
+	
+	if($npassword != $cnpassword) {
 		$error = true;
-		$cpassword_error = "Password and Confirm Password doesn't match";
+		$errormsg = "New Passwords Don't match";
 	}
 
-
-    $image = new Securimage();
-    if ($image->check($_POST['captcha_code']) != true) {
-	   $error = true;
-	   $captcha_error = "Captcha entry incorrect";
-    }
-	
-	
 	if (!$error) {
-		$qq = "INSERT INTO users(name,email,password,uuid) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "',uuid())	";
-		if(mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO users(name,email,password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
-			$successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
+## Check the user exists and the current passwords match
+$chk = "SELECT password FROM users WHERE email = '$email'";	
+	if(mysqli_query($GLOBALS["___mysqli_ston"], $chk)) {
+		## User exists
+		## Check password
+		$res = mysqli_query($GLOBALS["___mysqli_ston"], $chk);
+		$row = mysqli_fetch_assoc($res);
+		if ($row['password'] == md5($password)) {
+			## Matches - update with new password
+			$update = "UPDATE users set password=MD5('$npassword') WHERE email='$email'";
+			if (mysqli_query($GLOBALS["___mysqli_ston"], $update)) {
+				$successmsg = "Password Successfully Changed! <a href='login.php'>Click here to Login</a>";
+				} else {
+				$errormsg = "Something went wrong." . mysqli_error($GLOBALS["___mysqli_ston"]);		
+				}
+			} else {
+			$errormsg = "Incorrect Username or Password";		
+			}
 		} else {
-			$errormsg = "Error in registering...Please try again later!";
+		## User doesn't exist
+		$errormsg = "User $email doesn't exist.";
 		}
-	}
+
+}
+
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RTI Registration</title>
+	<title>RTI User Admin</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 </head>
@@ -89,10 +88,6 @@ if (isset($_POST['signup'])) {
 		</div>
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.php">Login</a></li>
-				<li class="active"><a href="register.php">Sign Up</a></li>
-			</ul>
 		</div>
 	</div>
 </nav>
@@ -102,13 +97,7 @@ if (isset($_POST['signup'])) {
 		<div class="col-md-4 col-md-offset-4 well">
 			<form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="signupform">
 				<fieldset>
-					<legend>Sign Up</legend>
-
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input type="text" name="name" placeholder="Enter Full Name" required value="<?php if($error) echo $name; ?>" class="form-control" />
-						<span class="text-danger"><?php if (isset($name_error)) echo $name_error; ?></span>
-					</div>
+					<legend>User Admin</legend>
 					
 					<div class="form-group">
 						<label for="name">Username</label>
@@ -117,23 +106,26 @@ if (isset($_POST['signup'])) {
 					</div>
 
 					<div class="form-group">
-						<label for="name">Password</label>
+						<label for="name">Current Password</label>
 						<input type="password" name="password" placeholder="Password" required class="form-control" />
 						<span class="text-danger"><?php if (isset($password_error)) echo $password_error; ?></span>
 					</div>
 
 					<div class="form-group">
-						<label for="name">Confirm Password</label>
-						<input type="password" name="cpassword" placeholder="Confirm Password" required class="form-control" />
-						<span class="text-danger"><?php if (isset($cpassword_error)) echo $cpassword_error; ?></span>
+						<label for="name">New Password</label>
+						<input type="password" name="npassword" placeholder="New Password" required class="form-control" />
+						<span class="text-danger"><?php if (isset($npassword_error)) echo $npassword_error; ?></span>
 					</div>
-    <div>
-        <?php echo Securimage::getCaptchaHtml() ?>
-        						<span class="text-danger"><?php if (isset($captcha_error)) echo "<br>$captcha_error"; ?></span>
-    </div>
+
 
 					<div class="form-group">
-						<input type="submit" name="signup" value="Sign Up" class="btn btn-primary" />
+						<label for="name">Confirm New Password</label>
+						<input type="password" name="cnpassword" placeholder="Confirm New Password" required class="form-control" />
+						<span class="text-danger"><?php if (isset($cnpassword_error)) echo $cnpassword_error; ?></span>
+					</div>
+
+					<div class="form-group">
+						<input type="submit" name="signup" value="Update Password" class="btn btn-primary" />
 					</div>
 				</fieldset>
 			</form>
@@ -143,7 +135,7 @@ if (isset($_POST['signup'])) {
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">	
-		Already Registered? <a href="login.php">Login Here</a>
+		
 		</div>
 	</div>
 </div>

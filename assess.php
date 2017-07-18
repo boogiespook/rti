@@ -152,7 +152,8 @@ input[type=submit] {
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
 				<?php if (isset($_SESSION['usr_id'])) { ?>
-				<li><p class="navbar-text">Signed in as <?php echo $_SESSION['usr_name']; ?></p></li>
+				<li><a href="#">Signed in as <?php echo $_SESSION['usr_name']; ?></a></li>
+				<li><a href="passwd.php">Change Password</a></li>
 				<li><a href="logout.php">Log Out</a></li>
 				<li><a href="blog">Blog</a></li>
 				<?php } else { ?>
@@ -169,7 +170,6 @@ input[type=submit] {
 if(isset($_SESSION['usr_id'])) {
 include 'dbconnect.php';
 $userId = $_SESSION['usr_id'];
-#phpinfo();
 ?>
 
     <div class="container">
