@@ -452,16 +452,7 @@ function checkVal(inNo) {
                 min: 0
               }
             },
-            			animation:{
-        			onComplete : function(){
-						var dataURL = canvas.toDataURL("image/png",1.0);
-						$.ajax({ 
-				   	 	type: "POST", 
-    						url: "chartSave.php",
-    						data: "spider="+dataURL+"&customer="+customerNameNoSpaces+"&chartType=spider",
-						});
-    			} 
-        }
+
     }
  }
     window.onload = function() {
@@ -500,17 +491,7 @@ var myBarChart = new Chart(ctx, {
         }
       }]
     },
-                			animation:{
-        			onComplete : function(){
-						var dataURLDev = myChartDev.toDataURL("image/png",1.0);
-//						console.log(dataURLDev);
-						$.ajax({ 
-				   	 	type: "POST", 
-   						url: "chartSave.php",
-   						data: "spider="+dataURLDev+"&customer="+customerNameNoSpaces+"&chartType=comparisonDev",
-						});
-    			} 
-        }
+
   }
 });  		
 
@@ -547,17 +528,7 @@ var myBarChart2 = new Chart(ctx2, {
         }
       }]
     },
-                			animation:{
-        			onComplete : function(){
-						var dataURLOps = myChartOps.toDataURL("image/png",1.0);
-//						console.log(dataURLDev);
-						$.ajax({ 
-				   	 	type: "POST", 
-   						url: "chartSave.php",
-   						data: "spider="+dataURLOps+"&customer="+customerNameNoSpaces+"&chartType=comparisonOps",
-						});
-    			} 
-        }
+
   }
 });  				
   		
