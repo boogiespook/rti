@@ -9,25 +9,14 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
+  <link rel="stylesheet" href="css/jquery.qtip.min.css" type="text/css" />
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> 
     <link rel="stylesheet" type="text/css" href="http://overpass-30e2.kxcdn.com/overpass.css"/>
 <!--	<script src="js/jquery-1.10.2.js"></script>-->
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-  <script>
-  $( function() {
-    $( "#tabs" ).tabs();
-  } );
-  </script>
-  
-    <script>
-  $( function() {
-    $( "#region" ).selectmenu();
-  } );
-  </script>
-
+  <script src="js/jquery.qtip.min.js"></script>
 <script>
 function validateForm() {
     var x = document.forms["myForm"]["rhEmail"].value;
@@ -42,8 +31,39 @@ function validateForm() {
     }
 }
 </script>
+
+<script type="text/javascript" >
+$(document).ready(function()
+ {
+     // Show tooltip on all <a/> elements with title attributes, but only when
+     // clicked. Clicking again will hide it.
+     $('a[title]').qtip({
+         show: 'click',
+         hide: 'click',
+         style: {
+        classes: 'infoStyle'
+    },
+    content: {
+        title: 'Futher Information'
+    },
+
+     });
+ });
+</script>
+  
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
   
     <script>
+  $( function() {
+    $( "#region" ).selectmenu();
+  } );
+  </script>
+
+     <script>
   $( function() {
     $( "input" ).checkboxradio();
   } );
@@ -94,6 +114,8 @@ function validateForm() {
       	visibility: hidden; 
       	} 
 
+
+
 body {
 font-family: 'overpass'
 }
@@ -130,10 +152,23 @@ input[type=submit] {
     border-radius: 5px; 
 }
 
-    </style>		
-    
+.infoButton {
+    background:url(images/information.png) no-repeat;
+    cursor:pointer;
+    width: 16px;
+    height: 16px;
+    border: none;
+    display: inline
+}  
 
-    
+.infoStyle{
+	font-size: 16px;
+	line-height:150%;
+}
+    </style>		
+
+
+
     
 </head>
 <body>
@@ -176,7 +211,7 @@ $userId = $_SESSION['usr_id'];
 
       <!-- Main component for a primary marketing message or call to action -->
 <!--      <div class="jumbotron"> -->
-<form name="myForm" id="innovate-form" action="tmp.php"  class="w3-container">
+<form name="myForm" id="innovate-form" action="tmp.php"  class="w3-container" >
 
 <div id="tabs">
   <ul>
@@ -511,19 +546,11 @@ By the end of this assessment you will:
 <?php
 
 function createQuestions($number,$area) {
-$string = file_get_contents("questions.json");
+#$string = file_get_contents("questions.json");
+$string = file_get_contents("questions-new.json");
 $json = json_decode($string, true);
-
-$automation_dev_array = $json['development']['automation'];
-$automation_ops_array = $json['operations']['automation'];
-$methodology_dev_array = $json['development']['methodology'];
-$methodology_ops_array = $json['operations']['methodology'];
-$architecture_dev_array = $json['development']['architecture'];
-$architecture_ops_array = $json['operations']['architecture'];
-$strategy_dev_array = $json['development']['strategy'];
-$strategy_ops_array = $json['operations']['strategy'];
-$environment_dev_array = $json['development']['environment'];
-$environment_ops_array = $json['operations']['environment'];	
+#print_r($json);
+	
 $i=0;
 print "<fieldset>
     <legend>Development</legend>";
@@ -534,12 +561,18 @@ $check = "checked";
 } else {
 $check = "";
 }
-print "<input class=\"w3-radio\" type=\"radio\" name=\"d" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['development'][$area][$i] . "</label><br>";
+#print_r($json);
+print "<input class=\"w3-radio\" type=\"radio\" name=\"d" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['development'][$area][$i]['question'] . "</label>";
+## Check if there are any explanatory comments.  If so, add an info button
+if($json['development'][$area][$i]['description'] != "XXX") {
+
+print '&nbsp<a href="#" title="'. $json['development'][$area][$i]['description'] . '"><img src="images/information.png"></a>';
+}
+print "<br>";
 $i++;
+#}
 }
 print "  </fieldset>";
-
-
 # Rinse and repeat for Ops
 $i=0;
 print "  <fieldset>
@@ -552,7 +585,12 @@ $check = "checked";
 } else {
 $check = "";
 }
-print "<input class=\"w3-radio\" type=\"radio\" name=\"o" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['operations'][$area][$i] . "</label><br>";
+print "<input class=\"w3-radio\" type=\"radio\" name=\"o" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['operations'][$area][$i]['question'] . "</label>";
+if($json['operations'][$area][$i]['description'] != "XXX") {
+
+print '&nbsp<a href="#" title="'. $json['operations'][$area][$i]['description'] . '"><img src="images/information.png"></a>';
+}
+print "<br>";
 $i++;
 }
 print "  </fieldset> ";
@@ -561,7 +599,7 @@ print "  </fieldset> ";
 }
 # End of Function
 
-createQuestions("1","automation");
+createQuestions(1,"automation");
 
 
 ?>    
