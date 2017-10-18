@@ -1112,7 +1112,7 @@ $i++;
 
 
 <h1>Comparison with others</h1>
-<p>Some words about comparisons</p>
+<p></p>
 <h2>Development</h2>
 <canvas id="myChartDev"></canvas>
 
