@@ -502,7 +502,7 @@ function checkVal(inNo) {
             
               ticks: {
                 beginAtZero: true,
-                max: 4,
+                max: 5,
                 min: 0
               }
             },
@@ -616,7 +616,7 @@ var myBarChart2 = new Chart(ctx2, {
 <?php
 
 # Create data arrays
-$string = file_get_contents("questions.json");
+$string = file_get_contents("questions-new.json");
 $json = json_decode($string, true);
 
 $automation_dev_array = $json['development']['automation'];
@@ -728,8 +728,8 @@ for ($ii = 0; $ii < 5; $ii++) {
 
 echo "    <tr>
         <td>$areas[$ii] </td>
-        <td><b>$dev_arr[$ii]</b> - " . ${$lcDev}[$d] . " </td>
-        <td><b>$ops_arr[$ii]</b> - " . ${$lcOps}[$o] . " </td>
+        <td><b>$dev_arr[$ii]</b> - " . ${$lcDev}[$d]['question'] . " </td>
+        <td><b>$ops_arr[$ii]</b> - " . ${$lcOps}[$o]['question'] . " </td>
     </tr>";        
 }    
   
@@ -1019,7 +1019,12 @@ array_push($workshops,$workshopLinks['OSEP']);
 <?php
 $i=1;
 foreach ($analysis as $key => $answer) {
-echo "<tr><td>$i</td><td>$answer</td><td>$recommendations[$key]</td></tr>";
+	if ($recommendations[$key] == "") {
+   $reco = "None";	
+	} else {
+	$reco = $recommendations[$key];
+	}
+echo "<tr><td>$i</td><td>$answer</td><td>$reco</td></tr>";
 $i++;
 }
 ?>

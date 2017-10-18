@@ -551,10 +551,13 @@ $string = file_get_contents("questions-new.json");
 $json = json_decode($string, true);
 #print_r($json);
 	
-$i=0;
+#$i=0;
+$i=1;
+
 print "<fieldset>
     <legend>Development</legend>";
-while( $i < 5) {
+#while( $i < 5) {
+while( $i < 6) {
 if ($i == 0) {
 $ii = $i + 1;
 $check = "checked";
@@ -574,11 +577,11 @@ $i++;
 }
 print "  </fieldset>";
 # Rinse and repeat for Ops
-$i=0;
+$i=1;
 print "  <fieldset>
     <legend>Operations</legend>";
 
-while( $i < 5) {
+while( $i < 6) {
 $ii = $i + 1;
 if ($i == 0) {
 $check = "checked";
