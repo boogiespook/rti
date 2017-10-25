@@ -1,0 +1,226 @@
+{
+  "development": {
+  "automation": {
+  "1": {
+  "question": "Déploiement manuel, pas de processus ou d'automatisation",
+  "description": "XXX"
+  },
+  "2": {
+  "question": "Automated builds (CI) + déploiements manuels avec procédures standardisées",
+  "description": "XXX"
+  },
+  "3": {
+  "question": "Tests automatisés et déploiements automatisés en non-production",
+  "description": "XXX"
+  },
+  "4": {
+"question": "Stratégie de livraison continue (seuls les candidats à la sortie sont testés)",
+"description": "XXX"
+},
+"5": {
+"question": "Lancements de boutons-poussoirs en production (déploiement continu et / ou operations)",
+"description": "XXX"
+}
+},
+"methodology": {
+"1": {
+"question": "Aucune methodology définie",
+"description": "XXX"
+},
+"2": {
+"question": "Approche cascade définie",
+"description": "XXX"
+},
+"3": {
+"question": "Développement agile limité sur de nouveaux projets (hors operations)",
+"description": "XXX"
+},
+"4": {
+"question": "Méthodologie Agile pour les équipes Développement et Opérations",
+"description": "XXX"
+},
+"5": {
+"question": "Développement et Opérations travaillant ensemble dans des équipes interfonctionnelles (DevOps)",
+"description": "XXX"
+}
+},
+"architecture": {
+"1": {
+"question": "Choix ad-hoc de plates-formes d'application et d'outillage, compréhension limitée des approches architecturales contemporaines",
+"description": "XXX"
+},
+"2": {
+"question": "Feuille de route technologique des fournisseurs sélectionnés, compréhension initiale des nouvelles architectures et conceptions",
+"description": "XXX"
+},
+"3": {
+"question": "Développement itératif d'applications existantes.",
+"description": "stratégie d'héritage limitée et débuts de nouvelles architectures de development"
+},
+"4": {
+"question": "Mettre l'accent sur les nouvelles plateformes d'applications et les plates-formes existantes limitées.",
+"description": "Architecture bien définie pour de nouveaux projets de development et modèles opérationnels"
+},
+"5": {
+"question": "Stratégie globale de development définie et holistique: Bonnes conceptions et architectures mises en place et régulièrement revues",
+"description": "XXX"
+}
+},
+"strategy": {
+"1": {
+"question": "rassemblement des exigences de style V (l'entreprise communique par le biais d'exigences informatiques fixes)",
+"description": "XXX"
+},
+"2": {
+"question": "Collecte d'exigences agiles (les besoins évoluent durant le development du projet)",
+"description": "XXX"
+},
+"3": {
+"question": "approche MVP (approche incrémentale avec feedbacks visibles)",
+"description": "XXX"
+},
+"4": {
+"question": "Méthodologies standard pour découvrir et évaluer les opportunités",
+"description": "XXX"
+},
+"5": {
+"question": "Vision transparente (l'entreprise communique à travers les exigences métier)",
+"description": "XXX"
+}
+},
+"environment": {
+"1": {
+"question": "Déploiement manuel, pas de processus ou d'automatisation",
+"description": "XXX"
+},
+"2": {
+"question": "Déploiement minimal, script ad-hoc, non répétable",
+"description": "XXX"
+},
+"3": {
+"question": "Traitement CI de base (tests unitaires, tests manuels)",
+"description": "XXX"
+},
+"4": {
+"question": "CI avancé,> 90% de tests automatisés, pipelines, passerelles d'approbation",
+"description": "XXX"
+},
+"5": {
+"question": "Une culture collaborative 100% DevOps avec des équipes transversales dynamisées et une amélioration constante",
+"description": "XXX"
+}
+}
+},
+"operations": {
+"automation": {
+"1": {
+"question": "Core build pour le système d'exploitation, provisionnement manuel ad-hoc, pas de patch ou d'automatisation",
+"description": "Les machines sont provisionnées (semi-) manuellement de manière ad-hoc, éventuellement avec le support d'une check-list Configuration gérée manuellement Patching ad-hoc, par machine Système d'exploitation déployé par une équipe et jeté au-dessus de la clôture à l'équipe mgmt d'application "
+},
+"2": {
+"question": "Déploiement centralisé automatisé, gestion de configuration ad-hoc.",
+"description": "Déploiement automatique par bouton-poussoir du système d'exploitation générique, c'est-à-dire non adapté à l'application Pas de gestion automatisée de la configuration Changements de configuration après déploiement intial effectué manuellement et ad hoc Peu de coordination entre système d'exploitation et patch d'application Le correctif de bout en bout est un processus ad hoc Système d'exploitation déployé par une équipe et jeté par-dessus la clôture à l'équipe de gestion des applications"
+},
+"3": {
+"question": "Cycle de vie du système d'exploitation défini, approvisionnement automatisé, configuration, correction et maintenance, tests automatisés et contrôle qualité de la construction.",
+"description": "Déploiement automatique par bouton-poussoir du système d'exploitation générique, c'est-à-dire non adapté à l'application La gestion du système d'exploitation est gérée par un système automatisé de gestion de la configuration tout au long de la vie de la machine. Système de gestion de la configuration Contrôle automatisé du déploiement du système d'exploitation et gestion des configurations uniquement Le déploiement et la gestion des applications sont en dehors du champ d'application Peu de coordination entre le système d'exploitation et les correctifs applicatifs Le correctif de bout en bout est un processus ad hoc déployé par une équipe et jeté sur la clôture à l'équipe de gestion des applications "
+},
+"4": {
+"question": "Le système d'exploitation est déployé avec l'application via le self-service.",
+"description": "Système d'exploitation et application gérés à l'unisson tout au long de la vie de la machine à l'aide d'un système automatisé Test automatisé de bout en bout et assurance qualité de l'application et du système d'exploitation."
+},
+"5": {
+"question": "L'application est déployée avec un système d'exploitation minimal utilisant une image immuable via le self-service.",
+"description": "Processus automatisé de création et de test d'images entièrement configurées Processus défini pour les mises à jour automatiques de machines en cours de fonctionnement en les remplaçant sans interruption de l'application."
+}
+},
+"methodology": {
+"1": {
+"question": "Ad hoc réactif, peu ou pas de documentation, approche structurée manquante ou inefficace",
+"description": "Certaines procédures peuvent exister pour des tâches courantes, d'autres sont faites entièrement ad-hoc, en utilisant les méthodes que l'opérateur qui exécute les tâches juge le mieux."
+},
+"2": {
+"question": "Procédures définies - Toutes les tâches documentées - Règles de sécurité rigides à l'échelle de l'entreprise",
+"description": "Il existe des procédures définies pour les tâches courantes.Lorsqu'une tâche est rencontrée pour laquelle une procédure n'existe pas, la procédure est d'abord documentée avant que la tâche ne soit exécutée.Les règles de sécurité sont rigides, définies comme des paramètres spécifiques, qui ne appliquer facilement aux nouvelles technologies "
+},
+"3": {
+"question": "Approche orientée service, SLA définis, directives de sécurité dynamiques",
+"description": "En plus de l'étape précédente, chaque service a un responsable de service responsable du development actif du service Les règles de sécurité sont définies comme des objectifs / capacités qui sont ensuite adaptés par le propriétaire du service pour être applicables au service. Des SLA définis existent pour le service, y compris des limites sur les pannes planifiées et imprévues."
+},
+"4": {
+"question": "Des équipes interfonctionnelles existent pour tous les services ou groupes de services",
+"description": "En plus de l'étape précédente, les services sont gérés par des équipes interfonctionnelles impliquant tous les aspects des operations de l'infrastructure, y compris les opérateurs d'application"
+},
+"5": {
+"question": "L'application est déployée en utilisant des méthodes de livraison continue",
+"description": "A ce stade, l'ajout est que les développeurs d'applications font également partie des équipes opérationnelles. En outre, une méthode CD automatisée est utilisée pour déployer l'application"
+}
+},
+"architecture": {
+"1": {
+"question": "Choix ad-hoc des futures plates-formes",
+"description": "XXX"
+},
+"2": {
+"question": "Feuille de route technologique des fournisseurs sélectionnés",
+"description": "XXX"
+},
+"3": {
+"question": "Mettre l'accent sur le maintien de l'infrastructure existante",
+"description": "XXX"
+},
+"4": {
+"question": "Priorité aux nouvelles applications",
+"description": "XXX"
+},
+"5": {
+"question": "Stratégie définie pour les architectures existantes et nouvelles",
+"description": "XXX"
+}
+},
+"strategy": {
+"1": {
+"question": "Instances d'impact commercial négatif",
+"description": "XXX"
+},
+"2": {
+"question": "Bon fonctionnement des services, peu de pannes imprévues mais lent à déployer",
+"description": "XXX"
+},
+"3": {
+"question": "Offres de services basées sur des projets, pas de pannes imprévues et déploiement rapide",
+"description": "XXX"
+},
+"4": {
+"question": "Opérations de libre service pour le development et l'entreprise",
+"description": "XXX"
+},
+"5": {
+"question": "Intégration transparente avec le projet I.T.",
+"description": "XXX"
+}
+},
+"environment": {
+"1": {
+"question": "Approche Unix standard dans une structure fortement Siled",
+"description": "XXX"
+},
+"2": {
+"question": "Des équipes opérationnelles réactives plutôt que pro-actives, les discussions sur les refroidisseurs d'eau se font plus",
+"description": "XXX"
+},
+"3": {
+"question": "Collaboration à travers les silos qui commencent à peine, compréhension agile, sens de l'urgence du changement établi",
+"description": "XXX"
+},
+"4": {
+"question": "Collaboratives, responsabilisées, connectées, plus petites, équipes interfonctionnelles.",
+"description": "Les solutions Open Source et Inner Source ont activement encouragé la formation de communautés de pratique, une nouvelle façon de travailler en collaboration"
+},
+"5": {
+"question": "Equipes transverses dynamisées et amélioration constante",
+"description": "Changement positif réalisé, contribution des individus, organisation ouverte comprise"
+}
+}
+}
+}

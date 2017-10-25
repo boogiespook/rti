@@ -186,7 +186,11 @@ input[type=submit] {
 		</div>
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
-				<?php if (isset($_SESSION['usr_id'])) { ?>
+						<li><a href="assess.php?lang=gb"><img src="images/United-Kingdom-icon.png" alt="UK"></a></li>
+			<li><a href="assess.php?lang=fr"><img src="images/France-icon.png" alt="France"></a></li>
+			<li><a href="assess.php?lang=de"><img src="images/Germany-icon.png" alt="Germany"></a></li>				
+			<li><a href="assess.php?lang=sv"><img src="images/Sweden-icon.png" alt="Sweden"></a></li>				
+			<?php if (isset($_SESSION['usr_id'])) { ?>
 				<li><a href="#">Signed in as <?php echo $_SESSION['usr_name']; ?></a></li>
 				<li><a href="passwd.php">Change Password</a></li>
 				<li><a href="logout.php">Log Out</a></li>
@@ -205,6 +209,12 @@ input[type=submit] {
 if(isset($_SESSION['usr_id'])) {
 include 'dbconnect.php';
 $userId = $_SESSION['usr_id'];
+
+if(isset($_GET['lang'])) {
+$_SESSION['lang'] = $_GET['lang'];
+} else {
+$_SESSION['lang'] = 'gb';
+}
 ?>
 
     <div class="container">
@@ -226,28 +236,13 @@ $userId = $_SESSION['usr_id'];
     <li><input type="submit" value="Submit"></li>
   </ul>
   <div id="tabs-1">
-  <h3>Welcome to the "Ready to Innovate?" Assessment.</h3>
-  
-    <p>
-<b>AIM</b>: To understand the wider issues around PaaS / DevOps adoption; what will make it successful or why has it stalled.  In parallel with technical PoCs or pilots.
-</p>
 
-<p>
-By the end of this assessment you will:
-<ul>
-<li>    Understand the wider issues around Platform-as-a-Service and DevOps adoption in parallel with technical PoCs or pilots.
-    <li>Understand the maturity of your organization across five outlined areas of interest:
-    <ul>
-        <li>Automation
-        <li>Methodology
-        <li>Architecture
-        <li>Strategy
-        <li>Environment
-        </ul>
-    <li>Walk away with next steps and recommended follow-up sessions from Red Hat Consulting to dive deep into the challenges and opportunities that face your business.
-    </ul>
-<br>
-<p>To complete the assessment, please use the tabs moving from left to right.  Once complete, click "Submit".</p>
+<?php
+
+readfile('tab-1-' . $_SESSION['lang'] . '.html');
+
+?>
+
   </div>
   <div id="tabs-2">
     
@@ -547,7 +542,7 @@ By the end of this assessment you will:
 
 function createQuestions($number,$area) {
 #$string = file_get_contents("questions.json");
-$string = file_get_contents("questions-new.json");
+$string = file_get_contents("questions-new-" . $_SESSION['lang'] . ".json");
 $json = json_decode($string, true);
 #print_r($json);
 	

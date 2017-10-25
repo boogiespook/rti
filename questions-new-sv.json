@@ -1,0 +1,226 @@
+{
+"development": {
+"automation": {
+"1": {
+"question": "Manuell utplacering, ingen process eller automatisering",
+"description": "XXX"
+},
+"2": {
+"question": "Automatiserad byggnad (CI) + manuell implementering med standardiserade procedurer",
+"description": "XXX"
+},
+"3": {
+"question": "Automatiserad testning och automatiserad implementering i icke-produktion",
+"description": "XXX"
+},
+"4": {
+"question": "Kontinuerlig leveransstrategi (endast släppande kandidater testas)",
+"description": "XXX"
+},
+"5": {
+"question": "Tryckknappsläpp till produktion (kontinuerlig installation och / eller drift)",
+"description": "XXX"
+}
+},
+"methodology": {
+"1": {
+"question": "Ingen definierad metod",
+"description": "XXX"
+},
+"2": {
+"question": "Definierat vattenfall",
+"description": "XXX"
+},
+"3": {
+"question": "Begränsad rörlig utveckling på nya projekt (ej verksamheter)",
+"description": "XXX"
+},
+"4": {
+"question": "Agile metodik för utvecklings- och operationslag",
+"description": "XXX"
+},
+"5": {
+"question": "Utveckling och drift som arbetar tillsammans i tvärfunktionella lag (DevOps)",
+"description": "XXX"
+}
+},
+"architecture": {
+"1": {
+"question": "Ad hoc-val av applikationsplattformar och verktyg. Begränsad förståelse för samtida arkitektoniska tillvägagångssätt.",
+"description": "XXX"
+},
+"2": {
+"question": "Selected supplier roadmap. Initial förståelse av nya arkitekturer och mönster",
+"description": "XXX"
+},
+"3": {
+"question": "Iterativ utveckling av befintliga applikationer.",
+"description": "Begränsad äldre strategi och början på nya utvecklingsarkitekturer"
+},
+"4": {
+"question": "Fokusera på nya applikationsplattformar och begränsade äldre plattformar.",
+"description": "Väldefinierad arkitektur för nya utvecklingsprojekt och driftsmodeller"
+},
+"5": {
+"question": "Holistisk och definierad övergripande utvecklingsstrategi. Bra design och arkitekturer på plats och regelbundet granskning",
+"description": "XXX"
+}
+},
+"strategy": {
+"1": {
+"question": "V-stil krav samla (företag kommunicerar genom fasta IT-krav)",
+"description": "XXX"
+},
+"2": {
+"question": "Agile krav insamling (krav utvecklas under projektutveckling)",
+"description": "XXX"
+},
+"3": {
+"question": "MVP-tillvägagångssätt (inkrementellt synsätt med synliga återkopplingar)",
+"description": "XXX"
+},
+"4": {
+"question": "Standardmetoder för att upptäcka och utvärdera möjligheter",
+"description": "XXX"
+},
+"5": {
+"question": "Transparent vision (företag kommunicerar genom företagskrav)",
+"description": "XXX"
+}
+},
+"environment": {
+"1": {
+"question": "Manuell utplacering, ingen process eller automatisering",
+"description": "XXX"
+},
+"2": {
+"question": "Minimal implementering, ad hoc-skript, ej repeterbar",
+"description": "XXX"
+},
+"3": {
+"question": "Baslinje CI-bearbetning (enhetstester, manuell testning)",
+"description": "XXX"
+},
+"4": {
+"question": "Advanced CI,> 90% automatiserad testning, pipelines, approval gateways",
+"description": "XXX"
+},
+"5": {
+"question": "100% DevOps samarbetskultur med kraftfulla tvärfunktionella lag och ständig förbättring",
+"description": "XXX"
+}
+}
+},
+"operations": {
+"automation": {
+"1": {
+"question": "Kärnbyggnad för operativsystem, manuell ad hoc-provisioning. Ingen patching eller automation",
+"description": "Maskiner är (semi-) manuellt anordnade på ett ad hoc-sätt, eventuellt med stöd av en checklista. Konfigurationen hanteras manuellt. Patching gjort ad hoc, per maskin. Operativsystem implementerat av ett lag och kastas över staketet till ansökan mgmt team "
+},
+"2": {
+"question": "Automatiserad kärnbyggnadsutbyggnad, ad hoc-konfigurationshantering. Endast kärnbyggnad.",
+"description": "Automatisk tryckknappsutplacering av generiskt operativsystem, det vill säga inte skräddarsydda för applikationen. Ingen automatisk konfigurationshantering. Konfiguration ändras efter det att man har genomfört den manuella och ad hoc-inbyggnaden. Lite koordinering mellan operativsystem och applikationspatchning . End-to-end patching är en ad hoc-process. Operativsystem implementerat av ett lag och kastat över staketet till applikationshanteringsteamet "
+},
+"3": {
+"question": "Definierad OS livscykel. Automatiserad provisioning, konfiguration, patching och underhåll. Automatiserad testning och QA av kärnbyggnad.",
+"description": "Automatisk tryckknappsutbyggnad av generiskt operativsystem, det vill säga inte anpassat till applikationen Operativsystemkonfigurationen hanteras via ett automatiserat konfigurationsmamagementsystem genom hela maskinens livslängd. Inget slut till slutet (applikation - drift system) konfigurationshantering men automatiserad testning av operativsystemets implementering och config mgmt bara. Programdistribution & mgmt ligger utanför omfattningen. Lite samordning mellan operativsystem och applikationspatchning. End-to-end patching är en ad hoc-process. utplacerad av ett lag och kastat över staketet till applikationshanteringsteamet "
+},
+"4": {
+"question": "OS distribueras tillsammans med applikation via självbetjäning.",
+"description": "OS och applikation hanteras gemensamt under hela maskinlivet med hjälp av ett automatiserat system. Automated end to end testing och QA of application and OS."
+},
+"5": {
+"question": "Programmet distribueras tillsammans med minimalt operativsystem med en oföränderlig bild genom självbetjäning.",
+"description": "Automatiserad process för att skapa och testa fullt konfigurerade bilder. Definierad process för automatiserade uppdateringar till löpande maskiner genom att ersätta dem utan att använda nedetid."
+}
+},
+"methodology": {
+"1": {
+"question": "Ad-hoc-reaktiv, liten eller ingen dokumentation, strukturerat tillvägagångssätt saknas eller ineffektivt",
+"description": "Vissa förfaranden kan existera för vanliga uppgifter. Andra uppgifter görs helt ad hoc, med hjälp av de metoder som operatören utför uppgiften att bedöma är bäst. Mycket liten dokumentation"
+},
+"2": {
+"question": "Definierade rutiner. Alla uppgifter dokumenterade. Starka säkerhetsregler för hela företaget",
+"description": "Definierade rutiner finns för vanliga uppgifter. När en uppgift uppstår för vilken ett förfarande inte existerar, är proceduren först dokumenterad innan uppgiften utförs. Säkerhetsreglerna är styva, definierade som specifika inställningar, som inte lätt applicera på ny teknik "
+},
+"3": {
+"question": "Serviceorienterat tillvägagångssätt. Definierade SLA: er. Dynamiska säkerhetsriktlinjer",
+"description": "Förutom den tidigare etappen har varje tjänst en serviceägare som är ansvarig för att aktivt utveckla tjänsten. Säkerhetsriktlinjer definieras som mål / funktioner som sedan anpassas av serviceägaren för att vara tillämplig på tjänsten. Definierade SLA: s finns för tjänsten, inklusive gränser för planerade och oplanerade avbrott "
+},
+"4": {
+"question": "Cross-functional teams finns för alla tjänster eller grupper av tjänster",
+"description": "Förutom det föregående skedet förvaltas tjänster av tvärfunktionella team som involverar alla aspekter av infrastrukturverksamheten, inklusive applikationsoperatörer"
+},
+"5": {
+"question": "Programmet distribueras med kontinuerliga leveransmetoder",
+"description": "I detta skede är tillägget att applikationsutvecklare också ingår i operativa lag. Dessutom används en automatiserad CD-metod för att distribuera applikationen"
+}
+},
+"architecture": {
+"1": {
+"question": "Ad hoc-val av framtida plattformar",
+"description": "XXX"
+},
+"2": {
+"question": "Selected supplier tech roadmap",
+"description": "XXX"
+},
+"3": {
+"question": "Fokus på att behålla befintlig infrastruktur",
+"description": "XXX"
+},
+"4": {
+"question": "Primär fokusering på nya applikationer",
+"description": "XXX"
+},
+"5": {
+"question": "Definierad strategi för befintliga och nya arkitekturer",
+"description": "XXX"
+}
+},
+"strategy": {
+"1": {
+"question": "Förekomst av negativ affärseffekter",
+"description": "XXX"
+},
+"2": {
+"question": "God fungerande serviceverksamhet, få oschemalagda avbrott men långsam att distribuera",
+"description": "XXX"
+},
+"3": {
+"question": "Projektbaserade serviceerbjudanden, inga oskadade avbrott och snabb implementering",
+"description": "XXX"
+},
+"4": {
+"question": "Självbetjäning för utveckling och verksamhet",
+"description": "XXX"
+},
+"5": {
+"question": "Transparent integration med projektet I.T.",
+"description": "XXX"
+}
+},
+"environment": {
+"1": {
+"question": "Standard Unix-tillvägagångssätt i en tung Siled-struktur",
+"description": "XXX"
+},
+"2": {
+"question": "Reaktiva snarare än Proaktiva Operations-team, Vattenkylare diskussioner blir mer färdiga",
+"description": "XXX"
+},
+"3": {
+"question": "Samarbetet över silo som bara börjar, smidigt förstått, känsla av brådskande för förändring etablerad",
+"description": "XXX"
+},
+"4": {
+"question": "Samarbetande, bemyndigade, anslutna, mindre, tvärfunktionella lag",
+"description": "Open Source och Inner Source-lösningar som aktivt uppmuntras att bilda arbetsmiljöer, nya samarbetsvillkor"
+},
+"5": {
+"question": "Energiverkat tvärfunktionella lag och ständig förbättring.",
+"description": "Positiv förändring realiserad, individer som bidrar, öppen organisation förstod"
+}
+}
+}
+}
