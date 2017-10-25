@@ -1,3 +1,18 @@
+<?php  
+date_default_timezone_set("Europe/London");
+## Connect to the Database 
+include 'dbconnect.php';
+connectDB();
+
+# Retrieve the data
+$hash = $_REQUEST['hash'];
+$qq = "SELECT * FROM data WHERE hash='".mysqli_real_escape_string($db, $hash)."'";
+$res = mysqli_query($db, $qq);
+
+// TODO: return 404 if hash not found
+
+$data_array = mysqli_fetch_assoc($res);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +20,7 @@
     <script src="utils.js"></script>
     <script src="raphael-2.1.4.min.js"></script>
     <script src="justgage.js"></script>
-    <title>Ready to Innovate Assessment</title>
+    <title><?php echo htmlspecialchars($data_array['client']) ?> - Ready to Innovate Assessment</title>
     <link href="http://static.jboss.org/css/rhbar.css" media="screen" rel="stylesheet">
 <style>
 
@@ -340,18 +355,7 @@ $(document).ready(function() {
 </head>
 
 <body>
-<?php  
-date_default_timezone_set("Europe/London");
-## Connect to the Database 
-include 'dbconnect.php';
-connectDB();
-
-# Retrieve the data
-$hash = $_REQUEST['hash'];
-$qq = "SELECT * FROM data WHERE hash='".mysqli_real_escape_string($db, $hash)."'";
-$res = mysqli_query($db, $qq);
-$data_array = mysqli_fetch_assoc($res);
-
+<?php
 $ops_arr = $dev_arr = array();
 
 foreach( $data_array as $var => $value )
