@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-if ( (!isset($_GET['key'])) || ($_GET['key'] != "90794183b1d497180")) {
+if ( (!isset($_GET['key'])) || ($_GET['key'] != "XXXXXXXXXXXXXXXXXXXX")) {
 exit("Unable to connect to site");
 }
 
