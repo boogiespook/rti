@@ -90,23 +90,23 @@
     },
     "environment": {
       "1": {
-          "question" : "Manual deployment, no process or automation",
+          "question" : "Traditional programming techniques in a heavily siloed structure",
           "description": "XXX"
       },
       "2": {
-          "question" : "Minimal deployment, ad-hoc scripting; non repeatable",
+          "question" : "Sporadic agile-adoption with limited cross-team collaboration",
           "description": "XXX"
       },
       "3": {
-        "question": "Baseline CI processing (unit tests, manual testing)",
+        "question": "Multi-team collaboration through formalised communication channels",
         "description": "XXX"
       },
       "4": {
-        "question": "Advanced CI, >90% automated testing, pipelines, approval gateways",
+        "question": "Early adoption of cross-functional teams and shared delivery goals",
         "description": "XXX"
       },
       "5": {
-        "question" : "100% DevOps collaborative culture with energised cross-functional teams and constant improvement",
+        "question" : "100% DevOps collaboraborative culture with energised cross-functional teams and constant improvement",
         "description": "XXX"    
         }
     }
