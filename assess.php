@@ -44,7 +44,7 @@ $(document).ready(function()
         classes: 'infoStyle'
     },
     content: {
-        title: 'Futher Information'
+        title: 'Further Information'
     },
 
      });
