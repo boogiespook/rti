@@ -1,0 +1,3 @@
+include_path = .:@php_dir@
+default_charset = utf8
+

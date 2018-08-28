@@ -1,4 +1,4 @@
-# Ready To Innovate
+# Ready To Innovate (RTI)
 
 ## Requirements
 *  PHP
@@ -6,10 +6,10 @@
 * Apache
 
 ## Setup
-Use database.sql to setup the table for the spider database.
+Use database.sql to setup the table for the RTI database.
 
-Edit dbconnect.php with your mysql credentials.
+Copy dbconnect.php.template to dbconnect.php and edit it to reflect your MySQL credentials.
 
 Create the database and tables:
 
-mysql -u XXXX -p spider < database.sql
+mysql -u XXXX -p XXXX < database.sql

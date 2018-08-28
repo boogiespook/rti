@@ -1,0 +1,4 @@
+<VirtualHost *>
+        ServerName @vhost1_name@
+        DocumentRoot @deploy_path@
+</VirtualHost>
