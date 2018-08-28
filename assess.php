@@ -560,7 +560,7 @@ $check = "checked";
 $check = "";
 }
 #print_r($json);
-print "<input class=\"w3-radio\" type=\"radio\" name=\"d" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['development'][$area][$i]['question'] . "</label>";
+print "<input class=\"w3-radio\" type=\"radio\" name=\"d" . $number . "\" id=\"radio-$area-d$i\" value=\"$i\" $check> <label for='radio-$area-d$i'>" . $json['development'][$area][$i]['question'] . "</label>";
 ## Check if there are any explanatory comments.  If so, add an info button
 if($json['development'][$area][$i]['description'] != "XXX") {
 
@@ -583,7 +583,7 @@ $check = "checked";
 } else {
 $check = "";
 }
-print "<input class=\"w3-radio\" type=\"radio\" name=\"o" . $number . "\" id=\"radio-1\" value=\"$i\" $check> <label>" . $json['operations'][$area][$i]['question'] . "</label>";
+print "<input class=\"w3-radio\" type=\"radio\" name=\"o" . $number . "\" id=\"radio-$area-o$i\" value=\"$i\" $check> <label for='radio-$area-o$i'>" . $json['operations'][$area][$i]['question'] . "</label>";
 if($json['operations'][$area][$i]['description'] != "XXX") {
 
 print '&nbsp<a href="#" title="'. $json['operations'][$area][$i]['description'] . '"><img src="images/information.png"></a>';
