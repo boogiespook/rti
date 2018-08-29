@@ -72,11 +72,11 @@
           "description": "XXX"
       },
       "2": {
-          "question" : "Agile requirements gathering (requirements evolves during project development)",
+          "question" : "Agile requirements gathering (requirements evolve during project development)",
           "description": "XXX"
       },
       "3": {
-        "question": "MVP approach (incremental approach with visible feedbacks)",
+        "question": "MVP approach (incremental approach with visible feedback)",
         "description": "XXX"
       },
       "4": {
@@ -106,7 +106,7 @@
         "description": "XXX"
       },
       "5": {
-        "question" : "100% DevOps collaboraborative culture with energised cross-functional teams and constant improvement",
+        "question" : "100% DevOps collaborative culture with energised cross-functional teams and constant improvement",
         "description": "XXX"    
         }
     }
@@ -114,7 +114,7 @@
   "operations": {
     "automation": {
       "1": {
-          "question" : "Core build for Operating system, manual ad-hoc provisioning. No patching or automation",
+          "question" : "Core build for operating system, manual ad-hoc provisioning. No patching or automation",
           "description": "Machines are (semi-)manually provisioned in an ad-hoc fashion, possibly with the support of a check-list. Configuration managed manually. Patching done ad-hoc, per-machine. Operating system deployed by one team and thrown over the fence to application mgmt team"
       },
       "2": {
@@ -148,7 +148,7 @@
         "description": "In addition to the previous stage, each service have an service owner who is responsible for actively developing the service. Security Guidelines are defined as goals/capabilities which then are adapted by the  service owner to be applicable to the service. Defined SLAs exist for the service, including limits on planned and unplanned outages"
       },
       "4": {
-        "question": "Defined procedures.  All tasks documented.  Service owner appointed.  Defined SLAs.  Cross-funtional teams exists for all services or group of services",
+        "question": "Defined procedures.  All tasks documented.  Service owner appointed.  Defined SLAs.  Cross-functional teams exists for all services or group of services",
         "description": "In addition to the previous stage, services are managed by cross-functional teams involving all aspects of infrastructure operations, including application operators"
       },
       "5": {
@@ -202,7 +202,7 @@
     },
     "environment": {
       "1": {
-          "question" : "Standard delivery approach in a heavily Siloed structure",
+          "question" : "Standard delivery approach in a heavily siloed structure",
           "description": "XXX"
       },
       "2": {
@@ -214,8 +214,8 @@
         "description": "XXX"
       },
       "4": {
-        "question": "Collaborative cross-functional teams.Open Source and Inner Source solutions actively encouraged",
-        "description": "Empowered, connected, smaller teams.  Communities of Practice forming, new collaborative way of working established."
+        "question": "Collaborative cross-functional teams. Open Source and Inner Source solutions actively encouraged",
+        "description": "Empowered, connected, smaller teams  Communities of Practice forming, new collaborative way of working established."
       },
       "5": {
         "question" : "Energised cross-functional teams and constant improvement",
