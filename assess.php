@@ -1,175 +1,41 @@
 <?php
 session_start();
+include('functionPutFieldsets.php');
+#phpinfo();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ready to Innovate?</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
-  <link rel="stylesheet" href="css/jquery.qtip.min.css" type="text/css" />
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> 
-    <link rel="stylesheet" type="text/css" href="http://overpass-30e2.kxcdn.com/overpass.css"/>
-<!--	<script src="js/jquery-1.10.2.js"></script>-->
-<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="js/jquery.qtip.min.js"></script>
-<script>
-function validateForm() {
-    var x = document.forms["myForm"]["rhEmail"].value;
-    var atpos = x.indexOf("@");
-    var dotpos = x.lastIndexOf(".");
-    var re = /\S+@redhat.com/;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="https://overpass-30e2.kxcdn.com/overpass.css"/>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap-slider.css" type="text/css" />
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/jquery.qtip.css" />
+<link rel="stylesheet" href="css/style.css" />
 
-    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-//    if (! x.match(re) ) {
-        alert("Not a valid e-mail address");
-        return false;
-    }
-}
-</script>
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>$.fn.slider = null</script>
+<script src="js/jquery.qtip.min.js"></script>
+<script src="js/bootstrap-slider.js"></script>  
+  
 <script type="text/javascript" >
-$(document).ready(function()
- {
-     // Show tooltip on all <a/> elements with title attributes, but only when
-     // clicked. Clicking again will hide it.
-     $('a[title]').qtip({
-         show: 'click',
-         hide: 'click',
-         style: {
-        classes: 'infoStyle'
-    },
-    content: {
-        title: 'Further Information'
-    },
-
-     });
- });
+  $( function() {
+$("#input").slider({
+    ticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
+    ticks_labels: ['0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'],
+    step: "0.5",
+    min: 0,
+    max: 6,
+    value: 0,
+    tooltip: "show",
+});
+  } );
 </script>
-  
-  <script>
-  $( function() {
-    $( "#tabs" ).tabs();
-  } );
-  </script>
-  
-    <script>
-  $( function() {
-    $( "#region" ).selectmenu();
-  } );
-  </script>
 
-     <script>
-  $( function() {
-    $( "input" ).checkboxradio();
-  } );
-  </script>
-  
-  <style>
-      #locationField, #controls {
-        position: relative;
-        width: 480px;
-      }
-      #autocomplete {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 99%;
-      }
-      .label {
-        text-align: right;
-        font-weight: bold;
-
-        color: #303030;
-      }
-      #address {
-        border: 1px solid #000090;
-        background-color: #f0f0ff;
-        width: 480px;
-        padding-right: 2px;
-      }
-      #address td {
-        font-size: 10pt;
-      }
-      .field {
-        width: 99%;
-      }
-      .slimField {
-        width: 80px;
-      }
-      .wideField {
-        width: 200px;
-      }
-      #locationField {
-        height: 20px;
-        margin-bottom: 2px;
-      }
-      .page { position: absolute; 
-      	top: 10; 
-      	left: 100; 
-      	visibility: hidden; 
-      	} 
-
-
-
-body {
-font-family: 'overpass'
-}
-
-
-p { font-family: 'overpass', sans-serif; line-height: 28px; margin-bottom: 15px; color: #666; }
-
-
-
-input {
-  border-radius: 15px;
-  margin: 10px;
-} 	
-
-    fieldset {
-      border: 0;
-    }
-
-    .overflow {
-      height: 200px;
-    }
-
-h3 { color: #7c795d; font-family: 'Source Sans Pro', sans-serif; font-size: 20px; font-weight: 400; line-height: 32px; margin: 0 0 14px; }
-
-input[type=submit] {
-    padding:0px 10px;
-    width: 135px;
- height: 205x;
-    font-size:20px; 
-    background:#EE6363; 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-}
-
-.infoButton {
-    background:url(images/information.png) no-repeat;
-    cursor:pointer;
-    width: 16px;
-    height: 16px;
-    border: none;
-    display: inline
-}  
-
-.infoStyle{
-	font-size: 16px;
-	line-height:150%;
-}
-    </style>		
-
-
-
-    
 </head>
 <body>
 
@@ -186,464 +52,339 @@ input[type=submit] {
 		</div>
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
-						<li><a href="assess.php?lang=gb"><img src="images/United-Kingdom-icon.png" alt="UK"></a></li>
-			<li><a href="assess.php?lang=fr"><img src="images/France-icon.png" alt="France"></a></li>
-			<li><a href="assess.php?lang=de"><img src="images/Germany-icon.png" alt="Germany"></a></li>				
-			<li><a href="assess.php?lang=sv"><img src="images/Sweden-icon.png" alt="Sweden"></a></li>				
-			<?php if (isset($_SESSION['usr_id'])) { ?>
-				<li><a href="#">Signed in as <?php echo $_SESSION['usr_name']; ?></a></li>
+								<li><a href="#">Signed in as Chris Jenkins</a></li>
 				<li><a href="passwd.php">Change Password</a></li>
 				<li><a href="logout.php">Log Out</a></li>
 				<li><a href="blog">Blog</a></li>
-				<?php } else { ?>
-				<li><a href="login.php">Login</a></li>
-				<li><a href="register.php">Sign Up</a></li>
-				<?php } ?>
-
+				
 			</ul>
 		</div>
 	</div>
 </nav>
-
-<?php
-if(isset($_SESSION['usr_id'])) {
-include 'dbconnect.php';
-$userId = $_SESSION['usr_id'];
-
-if(isset($_GET['lang'])) {
-$_SESSION['lang'] = $_GET['lang'];
-} else {
-$_SESSION['lang'] = 'gb';
-}
-?>
-
     <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-<!--      <div class="jumbotron"> -->
-<form name="myForm" id="innovate-form" action="tmp.php"  class="w3-container" >
-
-<div id="tabs">
-  <ul>
-  <?php
-  $i = 1;
-  $areas = array("Introduction","Details","Automation","Methodology","Architecture","Strategy","Environment");
-  foreach ($areas as $area) {
-   print "<li><a href=\"#tabs-" . $i . "\">$area</a></li>";
-   $i++;  	
-  }
-?>
-    <li><input type="submit" value="Submit"></li>
-  </ul>
-  <div id="tabs-1">
-
-<?php
-
-readfile('tab-1-' . $_SESSION['lang'] . '.html');
-
-?>
-
-  </div>
-  <div id="tabs-2">
     
-<label class="w3-label w3-validate">Client Name</label>
-<input class="w3-input" name="customerName" type="text" required>
 
-    <br>
-<label class="w3-label w3-validate" >Email Address</label>    
-<input onfocusout="validateForm()" class="w3-input" name="rhEmail"  type="text" required>
-    <br>
-<input type="hidden" name="userId" value="<?php echo $_SESSION['usr_id']; ?>">
+<form id="regForm" action="tmp.php">
+  <h1>Ready To Innovate</h1>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+  <h3>Welcome to the "Ready to Innovate?" Assessment.</h3>
 
-  <fieldset>
-    <label for="country">Country</label>
-    <select name="country" id="country">
-<option value="United Kingdom">United Kingdom</option>
-<option value="United States of America">United States of America</option>
-<option value="Afganistan">Afghanistan</option>
-<option value="Albania">Albania</option>
-<option value="Algeria">Algeria</option>
-<option value="American Samoa">American Samoa</option>
-<option value="Andorra">Andorra</option>
-<option value="Angola">Angola</option>
-<option value="Anguilla">Anguilla</option>
-<option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
-<option value="Argentina">Argentina</option>
-<option value="Armenia">Armenia</option>
-<option value="Aruba">Aruba</option>
-<option value="Australia">Australia</option>
-<option value="Austria">Austria</option>
-<option value="Azerbaijan">Azerbaijan</option>
-<option value="Bahamas">Bahamas</option>
-<option value="Bahrain">Bahrain</option>
-<option value="Bangladesh">Bangladesh</option>
-<option value="Barbados">Barbados</option>
-<option value="Belarus">Belarus</option>
-<option value="Belgium">Belgium</option>
-<option value="Belize">Belize</option>
-<option value="Benin">Benin</option>
-<option value="Bermuda">Bermuda</option>
-<option value="Bhutan">Bhutan</option>
-<option value="Bolivia">Bolivia</option>
-<option value="Bonaire">Bonaire</option>
-<option value="Bosnia &amp; Herzegovina">Bosnia &amp; Herzegovina</option>
-<option value="Botswana">Botswana</option>
-<option value="Brazil">Brazil</option>
-<option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
-<option value="Brunei">Brunei</option>
-<option value="Bulgaria">Bulgaria</option>
-<option value="Burkina Faso">Burkina Faso</option>
-<option value="Burundi">Burundi</option>
-<option value="Cambodia">Cambodia</option>
-<option value="Cameroon">Cameroon</option>
-<option value="Canada">Canada</option>
-<option value="Canary Islands">Canary Islands</option>
-<option value="Cape Verde">Cape Verde</option>
-<option value="Cayman Islands">Cayman Islands</option>
-<option value="Central African Republic">Central African Republic</option>
-<option value="Chad">Chad</option>
-<option value="Channel Islands">Channel Islands</option>
-<option value="Chile">Chile</option>
-<option value="China">China</option>
-<option value="Christmas Island">Christmas Island</option>
-<option value="Cocos Island">Cocos Island</option>
-<option value="Colombia">Colombia</option>
-<option value="Comoros">Comoros</option>
-<option value="Congo">Congo</option>
-<option value="Cook Islands">Cook Islands</option>
-<option value="Costa Rica">Costa Rica</option>
-<option value="Cote DIvoire">Cote D'Ivoire</option>
-<option value="Croatia">Croatia</option>
-<option value="Cuba">Cuba</option>
-<option value="Curaco">Curacao</option>
-<option value="Cyprus">Cyprus</option>
-<option value="Czech Republic">Czech Republic</option>
-<option value="Denmark">Denmark</option>
-<option value="Djibouti">Djibouti</option>
-<option value="Dominica">Dominica</option>
-<option value="Dominican Republic">Dominican Republic</option>
-<option value="East Timor">East Timor</option>
-<option value="Ecuador">Ecuador</option>
-<option value="Egypt">Egypt</option>
-<option value="El Salvador">El Salvador</option>
-<option value="Equatorial Guinea">Equatorial Guinea</option>
-<option value="Eritrea">Eritrea</option>
-<option value="Estonia">Estonia</option>
-<option value="Ethiopia">Ethiopia</option>
-<option value="Falkland Islands">Falkland Islands</option>
-<option value="Faroe Islands">Faroe Islands</option>
-<option value="Fiji">Fiji</option>
-<option value="Finland">Finland</option>
-<option value="France">France</option>
-<option value="French Guiana">French Guiana</option>
-<option value="French Polynesia">French Polynesia</option>
-<option value="French Southern Ter">French Southern Ter</option>
-<option value="Gabon">Gabon</option>
-<option value="Gambia">Gambia</option>
-<option value="Georgia">Georgia</option>
-<option value="Germany">Germany</option>
-<option value="Ghana">Ghana</option>
-<option value="Gibraltar">Gibraltar</option>
-<option value="Great Britain">Great Britain</option>
-<option value="Greece">Greece</option>
-<option value="Greenland">Greenland</option>
-<option value="Grenada">Grenada</option>
-<option value="Guadeloupe">Guadeloupe</option>
-<option value="Guam">Guam</option>
-<option value="Guatemala">Guatemala</option>
-<option value="Guinea">Guinea</option>
-<option value="Guyana">Guyana</option>
-<option value="Haiti">Haiti</option>
-<option value="Hawaii">Hawaii</option>
-<option value="Honduras">Honduras</option>
-<option value="Hong Kong">Hong Kong</option>
-<option value="Hungary">Hungary</option>
-<option value="Iceland">Iceland</option>
-<option value="India">India</option>
-<option value="Indonesia">Indonesia</option>
-<option value="Iran">Iran</option>
-<option value="Iraq">Iraq</option>
-<option value="Ireland">Ireland</option>
-<option value="Isle of Man">Isle of Man</option>
-<option value="Israel">Israel</option>
-<option value="Italy">Italy</option>
-<option value="Jamaica">Jamaica</option>
-<option value="Japan">Japan</option>
-<option value="Jordan">Jordan</option>
-<option value="Kazakhstan">Kazakhstan</option>
-<option value="Kenya">Kenya</option>
-<option value="Kiribati">Kiribati</option>
-<option value="Korea North">Korea North</option>
-<option value="Korea Sout">Korea South</option>
-<option value="Kuwait">Kuwait</option>
-<option value="Kyrgyzstan">Kyrgyzstan</option>
-<option value="Laos">Laos</option>
-<option value="Latvia">Latvia</option>
-<option value="Lebanon">Lebanon</option>
-<option value="Lesotho">Lesotho</option>
-<option value="Liberia">Liberia</option>
-<option value="Libya">Libya</option>
-<option value="Liechtenstein">Liechtenstein</option>
-<option value="Lithuania">Lithuania</option>
-<option value="Luxembourg">Luxembourg</option>
-<option value="Macau">Macau</option>
-<option value="Macedonia">Macedonia</option>
-<option value="Madagascar">Madagascar</option>
-<option value="Malaysia">Malaysia</option>
-<option value="Malawi">Malawi</option>
-<option value="Maldives">Maldives</option>
-<option value="Mali">Mali</option>
-<option value="Malta">Malta</option>
-<option value="Marshall Islands">Marshall Islands</option>
-<option value="Martinique">Martinique</option>
-<option value="Mauritania">Mauritania</option>
-<option value="Mauritius">Mauritius</option>
-<option value="Mayotte">Mayotte</option>
-<option value="Mexico">Mexico</option>
-<option value="Midway Islands">Midway Islands</option>
-<option value="Moldova">Moldova</option>
-<option value="Monaco">Monaco</option>
-<option value="Mongolia">Mongolia</option>
-<option value="Montserrat">Montserrat</option>
-<option value="Morocco">Morocco</option>
-<option value="Mozambique">Mozambique</option>
-<option value="Myanmar">Myanmar</option>
-<option value="Nambia">Nambia</option>
-<option value="Nauru">Nauru</option>
-<option value="Nepal">Nepal</option>
-<option value="Netherland Antilles">Netherland Antilles</option>
-<option value="Netherlands">Netherlands (Holland, Europe)</option>
-<option value="Nevis">Nevis</option>
-<option value="New Caledonia">New Caledonia</option>
-<option value="New Zealand">New Zealand</option>
-<option value="Nicaragua">Nicaragua</option>
-<option value="Niger">Niger</option>
-<option value="Nigeria">Nigeria</option>
-<option value="Niue">Niue</option>
-<option value="Norfolk Island">Norfolk Island</option>
-<option value="Norway">Norway</option>
-<option value="Oman">Oman</option>
-<option value="Pakistan">Pakistan</option>
-<option value="Palau Island">Palau Island</option>
-<option value="Palestine">Palestine</option>
-<option value="Panama">Panama</option>
-<option value="Papua New Guinea">Papua New Guinea</option>
-<option value="Paraguay">Paraguay</option>
-<option value="Peru">Peru</option>
-<option value="Phillipines">Philippines</option>
-<option value="Pitcairn Island">Pitcairn Island</option>
-<option value="Poland">Poland</option>
-<option value="Portugal">Portugal</option>
-<option value="Puerto Rico">Puerto Rico</option>
-<option value="Qatar">Qatar</option>
-<option value="Republic of Montenegro">Republic of Montenegro</option>
-<option value="Republic of Serbia">Republic of Serbia</option>
-<option value="Reunion">Reunion</option>
-<option value="Romania">Romania</option>
-<option value="Russia">Russia</option>
-<option value="Rwanda">Rwanda</option>
-<option value="St Barthelemy">St Barthelemy</option>
-<option value="St Eustatius">St Eustatius</option>
-<option value="St Helena">St Helena</option>
-<option value="St Kitts-Nevis">St Kitts-Nevis</option>
-<option value="St Lucia">St Lucia</option>
-<option value="St Maarten">St Maarten</option>
-<option value="St Pierre &amp; Miquelon">St Pierre &amp; Miquelon</option>
-<option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
-<option value="Saipan">Saipan</option>
-<option value="Samoa">Samoa</option>
-<option value="Samoa American">Samoa American</option>
-<option value="San Marino">San Marino</option>
-<option value="Sao Tome &amp; Principe">Sao Tome &amp; Principe</option>
-<option value="Saudi Arabia">Saudi Arabia</option>
-<option value="Senegal">Senegal</option>
-<option value="Serbia">Serbia</option>
-<option value="Seychelles">Seychelles</option>
-<option value="Sierra Leone">Sierra Leone</option>
-<option value="Singapore">Singapore</option>
-<option value="Slovakia">Slovakia</option>
-<option value="Slovenia">Slovenia</option>
-<option value="Solomon Islands">Solomon Islands</option>
-<option value="Somalia">Somalia</option>
-<option value="South Africa">South Africa</option>
-<option value="Spain">Spain</option>
-<option value="Sri Lanka">Sri Lanka</option>
-<option value="Sudan">Sudan</option>
-<option value="Suriname">Suriname</option>
-<option value="Swaziland">Swaziland</option>
-<option value="Sweden">Sweden</option>
-<option value="Switzerland">Switzerland</option>
-<option value="Syria">Syria</option>
-<option value="Tahiti">Tahiti</option>
-<option value="Taiwan">Taiwan</option>
-<option value="Tajikistan">Tajikistan</option>
-<option value="Tanzania">Tanzania</option>
-<option value="Thailand">Thailand</option>
-<option value="Togo">Togo</option>
-<option value="Tokelau">Tokelau</option>
-<option value="Tonga">Tonga</option>
-<option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
-<option value="Tunisia">Tunisia</option>
-<option value="Turkey">Turkey</option>
-<option value="Turkmenistan">Turkmenistan</option>
-<option value="Turks &amp; Caicos Is">Turks &amp; Caicos Is</option>
-<option value="Tuvalu">Tuvalu</option>
-<option value="Uganda">Uganda</option>
-<option value="Ukraine">Ukraine</option>
-<option value="United Arab Erimates">United Arab Emirates</option>
-<option value="Uraguay">Uruguay</option>
-<option value="Uzbekistan">Uzbekistan</option>
-<option value="Vanuatu">Vanuatu</option>
-<option value="Vatican City State">Vatican City State</option>
-<option value="Venezuela">Venezuela</option>
-<option value="Vietnam">Vietnam</option>
-<option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
-<option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
-<option value="Wake Island">Wake Island</option>
-<option value="Wallis &amp; Futana Is">Wallis &amp; Futana Is</option>
-<option value="Yemen">Yemen</option>
-<option value="Zaire">Zaire</option>
-<option value="Zambia">Zambia</option>
-<option value="Zimbabwe">Zimbabwe</option>    </select>
-    </fieldset>
+<p class="mainText">
+By the end of this assessment you will:
+<ul>
+<li  class="mainText">    Understand the wider issues around Digital Transformation, Platform-As-a-Service and DevOps adoption in parallel with technical PoCs or pilots.
+    <li class="mainText">Understand the maturity of your organization across five outlined areas of interest:
+    <ul>
+        <li class="mainText">Automation
+        <li class="mainText">Methodology
+        <li class="mainText">Architecture
+        <li class="mainText">Strategy
+        <li class="mainText">Environment
+        </ul>
+    <li class="mainText">Walk away with next steps and recommended follow-up sessions from Red Hat Consulting to dive deep into the challenges and opportunities that face your business.
+    </ul>
+<br>
+  </div>
+  <div class="tab"><h4>Customer Details</h4>
+    <p><input placeholder="Client Name" oninput="this.className = ''" name="customerName" ></p>
+    <p><input placeholder="Email Address" oninput="this.className = ''" name="rhEmail"  ></p>
+<?php putCountries();?>
+
+<?php putLoBs();?>
     
   </p>
-  <fieldset>
-    <label for="lob">Line of Business</label>
-    <select name="lob" id="lob">
-<option value="Agriculture">Agriculture</option>
-<option value="Business Services">Business Services</option>
-<option value="Construction & Real Estate">Construction & Real Estate</option>
-<option value="Education">Education</option>
-<option value="Energy, Raw Materials & Utilities">Energy, Raw Materials & Utilities</option>
-<option value="Finance">Finance</option>
-<option value="Government">Government</option>
-<option value="Healthcare">Healthcare</option>
-<option value="IT">IT</option>
-<option value="Leisure & Hospitality">Leisure & Hospitality</option>
-<option value="Libraries">Libraries</option>
-<option value="Manufacturing">Manufacturing</option>
-<option value="Media & Internet">Media & Internet</option>
-<option value="Non-Profit & Professional Orgs.">Non-Profit & Professional Orgs.</option>
-<option value="Retail">Retail</option>
-<option value="Software">Software</option>
-<option value="Telecommunications">Telecommunications</option>
-<option value="Transportation">Transportation</option>
-
-</select>
-</fieldset>   
-    
+<br> 
+ 
   </div>
-  <div id="tabs-3">
-
-<div class="widget"> 
   
 <?php
-
-function createQuestions($number,$area) {
-#$string = file_get_contents("questions.json");
-$string = file_get_contents("questions-new-" . $_SESSION['lang'] . ".json");
+function printQuestionsOps($type,$number,$area) {
+$string = file_get_contents("questions-new.json");
 $json = json_decode($string, true);
-#print_r($json);
-	
-#$i=0;
 $i=1;
+$initial = $type[0];
 
-print "<fieldset>
-    <legend>Development</legend>";
-#while( $i < 5) {
-while( $i < 6) {
-if ($i == 0) {
-$ii = $i + 1;
-$check = "checked";
-} else {
-$check = "";
-}
-#print_r($json);
-print "<input class=\"w3-radio\" type=\"radio\" name=\"d" . $number . "\" id=\"radio-$area-d$i\" value=\"$i\" $check> <label for='radio-$area-d$i'>" . $json['development'][$area][$i]['question'] . "</label>";
-## Check if there are any explanatory comments.  If so, add an info button
-if($json['development'][$area][$i]['description'] != "XXX") {
+print '<div class="divTable">   <h4>' . ucfirst($type) . '</h4>
 
-print '&nbsp<a href="#" title="'. $json['development'][$area][$i]['description'] . '"><img src="images/information.png"></a>';
-}
-print "<br>";
-$i++;
-#}
-}
-print "  </fieldset>";
-# Rinse and repeat for Ops
-$i=1;
-print "  <fieldset>
-    <legend>Operations</legend>";
+<div class="divTableBody">
+<div class="divTableRow">';
 
 while( $i < 6) {
-$ii = $i + 1;
-if ($i == 0) {
-$check = "checked";
-} else {
-$check = "";
-}
-print "<input class=\"w3-radio\" type=\"radio\" name=\"o" . $number . "\" id=\"radio-$area-o$i\" value=\"$i\" $check> <label for='radio-$area-o$i'>" . $json['operations'][$area][$i]['question'] . "</label>";
-if($json['operations'][$area][$i]['description'] != "XXX") {
 
-print '&nbsp<a href="#" title="'. $json['operations'][$area][$i]['description'] . '"><img src="images/information.png"></a>';
-}
-print "<br>";
+	print '<div class="divTableCell"><p class="mainText"><b>' . $i . ') </b>' . $json[$type][$area][$i]['question'] . "</p>";
+	if ($json[$type][$area][$i]['description'] != "XXX") {
+		print '<a href="#" title="' . $json[$type][$area][$i]['description'] . '">More Detail</a>';
+	}
+	print "</div>";
 $i++;
 }
-print "  </fieldset> ";
-
-
+print '</div>
+</div>';
+print '</div>';
+print '<input class="slider" type="range" data-slider-value="1"  name="' . $initial . $number . '" type="text" />';
 }
-# End of Function
-
-createQuestions(1,"automation");
 
 
-?>    
- 
-</div>    
-    </p>
-  </div>
-  <div id="tabs-4">
-<?php
-createQuestions(2,"methodology");
-?> 
-  </div>
-  <div id="tabs-5">
-<?php
-createQuestions(3,"architecture");
-?> 
 
-
-  </div>
-  <div id="tabs-6">
-
-<?php
-createQuestions(4,"strategy");
-?> 
-  </div>
-  <div id="tabs-7">
+?>  
   
-
-<?php
-createQuestions(5,"environment");
-?>
+  <div class="tab">
+  <h2>Automation</h2>
+  <h4> Change is the new constant and agile business practices are key to remaining competitive. Automation is often the space most influenced by our technology and methodology. </h4>
+<!--  <h3>Development</h3>-->
+<?php printQuestionsOps("development",1,"automation");  ?>
+<!--  <h3>Operations</h3>-->
+<?php printQuestionsOps("operations",1,"automation");  ?>
   </div>
-</div>
 
+  <div class="tab">
+  <h2>Methodology</h2>
+  <h4> In today’s market, large organizations must rely on more than just technology and tools. In this section, methodology refers to the way in which you are running your IT projects</h4>
+<!--  <h3>Development</h3>-->
+<?php printQuestionsOps("development",2,"methodology");  ?>
+<!--  <h3>Operations</h3>-->
+<?php printQuestionsOps("operations",2,"methodology");  ?>
+  </div>
+
+  <div class="tab">
+  <h2>Architecture</h2>
+  <h4> As systems expand, you need to effectively manage your IT environment so all the parts work together to get the quickest return on investment (ROI). The following questions cover the long term architectural motivations, aims, and advances to your current state architecture</h4>
+<!--  <h3>Development</h3>-->
+<?php printQuestionsOps("development",3,"architecture");  ?>
+<!--  <h3>Operations</h3>-->
+<?php printQuestionsOps("operations",3,"architecture");  ?>
+  </div>
+
+  <div class="tab">
+  <h2>Strategy</h2>
+  <h4> Defining a strategy is one of the most challenging areas for an organization. Often, the ability to interpret and translate business ideas to solutions can be complex</h4>
+<!--  <h3>Development</h3>-->
+<?php printQuestionsOps("development",4,"strategy");  ?>
+<!--  <h3>Operations</h3>-->
+<?php printQuestionsOps("operations",4,"strategy");  ?>
+  </div>
+
+  <div class="tab">
+  <h2>Environment</h2>
+  <h4> In this section, environment is defined as the mixture of staff, culture, training, and skill level within each area</h4>
+<!--  <h3>Development</h3>-->
+<?php printQuestionsOps("development",5,"environment");  ?>
+<!--  <h3>Operations</h3>-->
+<?php printQuestionsOps("operations",5,"environment");  ?>
+  </div>
+
+
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtnCJ" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>    
+    <span class="step"></span>     
+     </div>
 </form>
 
-      </div>
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtnCJ").style.display = "none";
+  } else {
+    document.getElementById("prevBtnCJ").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = true;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+<script type="text/javascript" >
+var x, i, j, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < selElmnt.length; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+  });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
 
 
-    </div> <!-- /container -->
-<?php    }
-####  End of Logged on bit ######
-?>
- 
 
 
+  <script>
+$(".slider").slider({
+    step: 0.5,
+    min: 1,
+    max: 5,
+    value: 1,
+    ticks: [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
+
+    slide: function(event, ui) {
+//        $("input[name=" + $(this).attr("id")).val(ui.value);
+        $("input[name=" + $(this).attr("id")).val((ui.value / 10) - 0.1 + 1);
+    }
+});
+
+  </script>
+<div>
+<script type="text/javascript" >
+ $(document).ready(function()
+ {
+     // Show tooltip on all <a/> elements with title attributes, but only when
+     // clicked. Clicking anywhere else on the document will hide the tooltip
+     $('a[title]').qtip({
+         show: 'click',
+         hide: 'unfocus'
+     });
+ });
+</script>  
+  <script>
+  $( function() {
+    $( "#country" )
+      .selectmenu()
+      .selectmenu( "menuWidget" )
+        .addClass( "overflow" );
+
+    $( "#lob" )
+      .selectmenu()
+      .selectmenu( "menuWidget" )
+        .addClass( "overflow" );
+
+  } );
+  </script>
 </body>
 </html>
-

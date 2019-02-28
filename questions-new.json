@@ -2,56 +2,56 @@
   "development": {
     "automation": {
       "1": {
-          "question" : "Ad-hoc tools to build & deploy",
-          "description": "XXX"
+        "question": "Ad-hoc tools to build & deploy",
+        "description": "No standard corporate wide tools used for automation.  Development team download various tools from the internet."
       },
       "2": {
-          "question" : "Automated builds (CI) + manual deployments with standardized procedures",
-          "description": "XXX"
+        "question": "Automated builds (CI) + manual deployments with standardized procedures",
+        "description": "Limited use continuous integration but there are guildelines for release and deployment."
       },
       "3": {
         "question": "Automated testing and automated deployments in non-production",
-        "description": "XXX"
+        "description": "Full automated testing for applications but only in pre-production environments.  Deployment to production is a manual process."
       },
       "4": {
         "question": "Continuous Delivery strategy (only release candidates are tested) ",
-        "description": "XXX"
+        "description": "Standardised automated CI and CD pipelines in place."
       },
       "5": {
-        "question" : "Push-button releases to production (Continuous Deployment and/or Operations)",
-        "description": "XXX"    
+        "question": "Push-button releases to production (Continuous Deployment and/or Operations)",
+        "description": "XXX"
       }
     },
     "methodology": {
       "1": {
-          "question" : "Ad-hoc development approach",
-          "description": "XXX"
+        "question": "Ad-hoc development approach",
+        "description": "Teams or individual developers chose their own preferred development tools and ways of working.  No standardised approach to development"
       },
       "2": {
-          "question" : "Defined Waterfall approach",
-          "description": "XXX"
+        "question": "Defined Waterfall approach",
+        "description": "Rigid waterfall development methodology.  No iterative design or development takes place.  Developers are unable to react to unexpected changes in design and/or requirements."
       },
       "3": {
         "question": "Limited agile development on new projects (not including operations)",
-        "description": "XXX"
+        "description": "The organisation has started to embrace agile development techniques with agile methods proferred for all new projects."
       },
       "4": {
         "question": "Agile development through to production & operations",
-        "description": "XXX"
+        "description": "Cross-functional teams working together in an agile manner."
       },
       "5": {
-        "question" : "Development and Operations working together in cross-functional teams (DevOps)",
-        "description": "XXX"    
+        "question": "Development and Operations working together in cross-functional teams (DevOps)",
+        "description": "XXX"
       }
     },
     "architecture": {
-       "1": {
-          "question" : "Ad-hoc choice of application platforms and tooling. Limited understanding of contemporary architectural approaches",
-          "description": "XXX"
+      "1": {
+        "question": "Ad-hoc choice of application platforms and tooling. Limited understanding of contemporary architectural approaches",
+        "description": "Legacy application platforms being used instead of investigating newer and more efficient plaform types."
       },
       "2": {
-          "question" : "Selected vendor technology roadmap. Initial understanding of new architectures and designs",
-          "description": "XXX"
+        "question": "Selected vendor technology roadmap. Initial understanding of new architectures and designs",
+        "description": "The organisation is led by their vendors and are locked in to their architectures."
       },
       "3": {
         "question": "Iterative development of existing applications. Limited legacy strategy and beginnings of new development architectures",
@@ -62,108 +62,108 @@
         "description": "Well defined architecture for new development projects and operating models"
       },
       "5": {
-        "question" : "Holistic & defined overall development strategy. Good designs and architectures in place and under regular review",
-        "description": "XXX"    
+        "question": "Holistic & defined overall development strategy. Good designs and architectures in place and under regular review",
+        "description": "XXX"
       }
     },
     "strategy": {
-       "1": {
-          "question" : "V-style requirements gathering (business communicates through fixed IT requirements)",
-          "description": "XXX"
+      "1": {
+        "question": "Waterfall or other sub-optimal process",
+        "description": "Process friction occures across teams with manual intervention required at many stages of development."
       },
       "2": {
-          "question" : "Agile requirements gathering (requirements evolve during project development)",
-          "description": "XXX"
+        "question": "Emerging Agile style using iterations a backlogue but low business alignment",
+        "description": "XXX"
       },
       "3": {
-        "question": "MVP approach (incremental approach with visible feedback)",
+        "question": "Minimal Viable Product and walking skeleton approach leading to the testing of assumptions.  Incremental development with visible feedback",
         "description": "XXX"
       },
       "4": {
-        "question": "Standard methodologies for discovering and evaluating opportunities",
+        "question": "Business and development teams aligned through Agile methodologies and practices",
         "description": "XXX"
       },
       "5": {
-        "question" : "Transparent vision (business communicates through business requirements)",
-        "description": "XXX"    
-        }
+        "question": "Quantifiable business objectives realised through scaled Agile. Agreed KPIs with rapid feeback loop",
+        "description": "XXX"
+      }
     },
     "environment": {
       "1": {
-          "question" : "Traditional programming techniques in a heavily siloed structure",
-          "description": "XXX"
+        "question": "Traditional programming techniques in a heavily siloed structure",
+        "description": "Very limited knowledge of modern development environments.  Reliance on a small number of experts."
       },
       "2": {
-          "question" : "Sporadic agile-adoption with limited cross-team collaboration",
-          "description": "XXX"
+        "question": "Sporadic agile-adoption with limited cross-team collaboration",
+        "description": "XXX"
       },
       "3": {
         "question": "Multi-team collaboration through formalised communication channels",
-        "description": "XXX"
+        "description": "Enterprise wide collaboration tools embraced across multiple teams."
       },
       "4": {
         "question": "Early adoption of cross-functional teams and shared delivery goals",
         "description": "XXX"
       },
       "5": {
-        "question" : "100% DevOps collaborative culture with energised cross-functional teams and constant improvement",
-        "description": "XXX"    
-        }
+        "question": "100% DevOps collaboraborative culture with energised cross-functional teams and constant improvement",
+        "description": "XXX"
+      }
     }
   },
   "operations": {
     "automation": {
       "1": {
-          "question" : "Core build for operating system, manual ad-hoc provisioning. No patching or automation",
-          "description": "Machines are (semi-)manually provisioned in an ad-hoc fashion, possibly with the support of a check-list. Configuration managed manually. Patching done ad-hoc, per-machine. Operating system deployed by one team and thrown over the fence to application mgmt team"
+        "question": "Core build for Operating system, manual ad-hoc provisioning. No patching or automation",
+        "description": "Machines are (semi-)manually provisioned in an ad-hoc fashion, possibly with the support of a check-list. Configuration managed manually. Patching done ad-hoc, per-machine. Operating system deployed by one team and thrown over the fence to application mgmt team"
       },
       "2": {
-          "question" : "Automated core build deployment, ad-hoc configuration management. Patching core build only",
-          "description": "Automatic push-button deployment of generic operating-system, i.e not tailored to the application. No automated configuration management. Configuration changes after intial deployment done manually and ad-hoc. Little co-ordination between operating system and application patching. The end-to-end patching is an ad-hoc process. Operating system deployed by one team and thrown over the fence to application management team"
+        "question": "Automated core build deployment, ad-hoc configuration management. Patching core build only",
+        "description": "Automatic push-button deployment of generic operating-system, i.e not tailored to the application. No automated configuration management. Configuration changes after intial deployment done manually and ad-hoc. Little co-ordination between operating system and application patching. The end-to-end patching is an ad-hoc process. Operating system deployed by one team and thrown over the fence to application management team"
       },
       "3": {
         "question": "Defined OS lifecycle. Automated provisioning, configuration, patching and maintenance. Automated testing and QA of core build",
         "description": "Automatic push-button deployment of generic operating system, i.e not tailored to the application Operating system configuration is managed through an automated configuration mamagement system through out the life of the machine. No end-to-end (application  - operating system) configuration management though Automated testing of operating system deployment and config mgmt only. Application deployment & mgmt is outside the scope. Little coordination between operating system and application patching. The end-to-end patching  is an ad-hoc process. Operating system deployed by one team and thrown over the fence to application management team"
       },
       "4": {
-        "question": "OS is deployed together with application through self service.  OS and application managed in unison throughout machine life using an automated system. Automated end to end testing and QA of application and OS",
+        "question": "OS is deployed together with application through self service.",
         "description": "OS and application managed in unison throughout machine life using an automated system. Automated end to end testing and QA of application and OS. "
       },
       "5": {
-        "question" : "Application is deployed together with minimal OS using an immutable image through self service. Automated process for creating and testing fully configured images. Defined process for automated updates to running machines by replacing them without application downtime",
-        "description": "Automated process for creating and testing fully configured images. Defined process for automated updates to running machines by replacing them without application downtime.  "    
+        "question": "Automated process for creating and testing fully configured images.",
+        "description": "Application is deployed together with minimal OS using an immutable image through self service. Automated process for creating and testing fully configured images. Defined process for automated updates to running machines by replacing them without application downtime"
       }
     },
     "methodology": {
       "1": {
-          "question" : "Ad-hoc reactive, little or no documentation, structured approach is missing or ineffective",
-          "description": "Some procedures may exist for common tasks. Other tasks are done entirely ad-hoc, using the methods the operator performing the task judges to be the best. Very little documentation"
+        "question": "Ad-hoc reactive, little or no documentation, structured approach is missing or ineffective",
+        "description": "Some procedures may exist for common tasks. Other tasks are done entirely ad-hoc, using the methods the operator performing the task judges to be the best. Very little documentation"
       },
       "2": {
-          "question" : "Defined procedures. All tasks documented. Company-wide rigid security rules",
-          "description": "Defined procedures exist for common tasks. When a task is encountered for which a procedure does not exist, the procedure is first documented before the task is carried out. Security rules are rigid, defined as specific settings, which do not easily apply to new technologies"
+        "question": "Defined procedures. All tasks documented. Company-wide rigid security rules",
+        "description": "Defined procedures exist for common tasks. When a task is encountered for which a procedure does not exist, the procedure is first documented before the task is carried out. Security rules are rigid, defined as specific settings, which do not easily apply to new technologies"
       },
       "3": {
         "question": "Defined procedures. All tasks documented.  Service oriented approach.  Defined SLAs. Dynamic security guidelines",
         "description": "In addition to the previous stage, each service have an service owner who is responsible for actively developing the service. Security Guidelines are defined as goals/capabilities which then are adapted by the  service owner to be applicable to the service. Defined SLAs exist for the service, including limits on planned and unplanned outages"
       },
       "4": {
-        "question": "Defined procedures.  All tasks documented.  Service owner appointed.  Defined SLAs.  Cross-functional teams exists for all services or group of services",
+        "question": "Defined procedures.  All tasks documented.  Service owner appointed.  Defined SLAs.  Cross-funtional teams exists for all services or group of services",
         "description": "In addition to the previous stage, services are managed by cross-functional teams involving all aspects of infrastructure operations, including application operators"
       },
       "5": {
-        "question" : "Application is deployed using Continuous Delivery methods",
-        "description": "In this stage, the addition is that application developers also are part of the operational teams Also, an automated CD method is used to deploy the application"    
+        "question": "Application is deployed using Continuous Delivery methods",
+        "description": "In this stage, the addition is that application developers also are part of the operational teams Also, an automated CD method is used to deploy the application"
       }
     },
     "architecture": {
       "1": {
-          "question" : "Ad-hoc choice of future platforms",
-          "description": "XXX"
+        "question": "Ad-hoc choice of future platforms",
+        "description": "XXX"
       },
       "2": {
-          "question" : "Selected vendor tech roadmap",
-          "description": "XXX"
+        "question": "Selected vendor tech roadmap",
+        "description": "XXX"
       },
       "3": {
         "question": "Focus on maintaining existing infrastructure",
@@ -174,18 +174,18 @@
         "description": "XXX"
       },
       "5": {
-        "question" : "Defined strategy for existing and new architectures",
-        "description": "XXX"    
+        "question": "Defined strategy for existing and new architectures",
+        "description": "XXX"
       }
     },
     "strategy": {
       "1": {
-          "question" : "Instances of negative business impact",
-          "description": "XXX"
+        "question": "Instances of negative business impact",
+        "description": "XXX"
       },
       "2": {
-          "question" : "Good functioning service operations, few unscheduled outage but slow to deploy",
-          "description": "XXX"
+        "question": "Good functioning service operations, few unscheduled outage but slow to deploy",
+        "description": "XXX"
       },
       "3": {
         "question": "Project based service offerings, no unscheduled outages and rapid deployment",
@@ -196,31 +196,31 @@
         "description": "XXX"
       },
       "5": {
-        "question" : "Transparent integration with project I.T.",
-        "description": "XXX"    
+        "question": "Transparent integration with project I.T.",
+        "description": "XXX"
       }
     },
     "environment": {
       "1": {
-          "question" : "Standard delivery approach in a heavily siloed structure",
-          "description": "XXX"
+        "question": "Standard delivery approach in a heavily Siloed structure",
+        "description": "XXX"
       },
       "2": {
-          "question" : "Reactive rather than Pro-active Operations teams, Water cooler discussions get more done",
-          "description": "XXX"
+        "question": "Reactive rather than Pro-active Operations teams, Water cooler discussions get more done",
+        "description": "XXX"
       },
       "3": {
         "question": "Collaboration across siloes just beginning, agile understood, sense of urgency for change established",
         "description": "XXX"
       },
       "4": {
-        "question": "Collaborative cross-functional teams. Open Source and Inner Source solutions actively encouraged",
-        "description": "Empowered, connected, smaller teams  Communities of Practice forming, new collaborative way of working established."
+        "question": "Collaborative cross-functional teams.Open Source and Inner Source solutions actively encouraged",
+        "description": "Empowered, connected, smaller teams.  Communities of Practice forming, new collaborative way of working established."
       },
       "5": {
-        "question" : "Energised cross-functional teams and constant improvement",
-        "description": "Positive change realised, individuals contributing, Open Organisation understood"    
+        "question": "Energised cross-functional teams and constant improvement",
+        "description": "Positive change realised, individuals contributing, Open Organisation understood"
       }
     }
   }
- }
+}

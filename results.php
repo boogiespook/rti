@@ -1,26 +1,11 @@
-<?php  
-date_default_timezone_set("Europe/London");
-## Connect to the Database 
-include 'dbconnect.php';
-connectDB();
-
-# Retrieve the data
-$hash = $_REQUEST['hash'];
-$qq = "SELECT * FROM data WHERE hash='".mysqli_real_escape_string($db, $hash)."'";
-$res = mysqli_query($db, $qq);
-
-// TODO: return 404 if hash not found
-
-$data_array = mysqli_fetch_assoc($res);
-?>
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="Chart.bundle.js"></script>
-    <script src="utils.js"></script>
-    <script src="raphael-2.1.4.min.js"></script>
-    <script src="justgage.js"></script>
-    <title><?php echo htmlspecialchars($data_array['client']) ?> - Ready to Innovate Assessment</title>
+    <script src="js/Chart.bundle.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/raphael-2.1.4.min.js"></script>
+    <script src="js/justgage.js"></script>
+    <title>Ready to Innovate Assessment</title>
     <link href="http://static.jboss.org/css/rhbar.css" media="screen" rel="stylesheet">
 <style>
 
@@ -355,16 +340,27 @@ $(document).ready(function() {
 </head>
 
 <body>
-<?php
-$ops_arr = $dev_arr = array();
+<?php  
+date_default_timezone_set("Europe/London");
+## Connect to the Database 
+include 'dbconnect.php';
+connectDB();
+
+# Retrieve the data
+$hash = $_REQUEST['hash'];
+$qq = "SELECT * FROM data WHERE hash='".mysqli_real_escape_string($db, $hash)."'";
+$res = mysqli_query($db, $qq);
+$data_array = mysqli_fetch_assoc($res);
+
+$ops_arr = $dev_arr = $opsRound_arr = $devRound_arr = array();
 
 foreach( $data_array as $var => $value )
     {
     	if($var=='date') continue;
-      if(substr($var[0],0,1) == "o") { $ops_arr[]=$value; };
-      if(substr($var[0],0,1) == "d") { $dev_arr[]=$value;};
-    }
-    
+      if(substr($var[0],0,1) == "o") { $ops_arr[]=$value; $opsRound_arr[] = round($value);  };
+      if(substr($var[0],0,1) == "d") { $dev_arr[]=$value; $devRound_arr[] = round($value);  };
+    } 
+     
  ?>
       <div id="wrapper">
       <header>
@@ -473,7 +469,8 @@ var data = {
     label: "Average",
     backgroundColor: "orange",
     data: <?php 
-    $qq = "select avg(d1) as d1,avg(d2) as d2, avg(d3) as d3, avg(d4) as d4, avg(d5) as d5 from data;";    
+ #   $qq = "select avg(d1) as d1,avg(d2) as d2, avg(d3) as d3, avg(d4) as d4, avg(d5) as d5 from data;";    
+    $qq = "select ROUND(avg(d1),2) as d1, ROUND(avg(d2),2) as d2, ROUND(avg(d3),2) as d3, ROUND(avg(d4),2) as d4, ROUND(avg(d5),2) as d5 from data;";    
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
     $row = mysqli_fetch_array($res);
      echo "[" . $row[0] . "," . $row[1] . "," . $row[2] . "," . $row[3] . "," . $row[4] . "]"; 
@@ -510,7 +507,8 @@ var dataOps = {
     label: "Average",
     backgroundColor: "orange",
     data: <?php 
-    $qq = "select avg(o1) as d1,avg(o2) as d2, avg(o3) as d3, avg(o4) as d4, avg(o5) as d5 from data;";    
+#    $qq = "select avg(o1) as d1,avg(o2) as d2, avg(o3) as d3, avg(o4) as d4, avg(o5) as d5 from data;";    
+    $qq = "select ROUND(avg(o1),2) as o1, ROUND(avg(o2),2) as o2, ROUND(avg(o3),2) as o3, ROUND(avg(o4),2) as o4, ROUND(avg(o5),2) as o5 from data;";    
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
     $row = mysqli_fetch_array($res);    
      echo "[" . $row[0] . "," . $row[1] . "," . $row[2] . "," . $row[3] . "," . $row[4] . "]"; 
@@ -622,19 +620,21 @@ for ($ii = 0; $ii < 5; $ii++) {
 	$lcArea=strtolower($areas[$ii]);
 	$lcDev=$lcArea."_dev_array";
 	$lcOps=$lcArea."_ops_array";
-	$o = $ops_arr[$ii];
+#	$o = $ops_arr[$ii];
+	$o = round($ops_arr[$ii]);
 	$weighting['Operations_'. $areas[$ii]] = $ops_arr[$ii]+1 * $areaWeighting[$ii];
 	$weighting['Development_'. $areas[$ii]] = $dev_arr[$ii]+1 * $areaWeighting[$ii];
 	$oWeight[$areas[$ii]] = $ops_arr[$ii] * $areaWeighting[$ii];
 	$dWeight[$areas[$ii]] = $dev_arr[$ii] * $areaWeighting[$ii];
-	$d = $dev_arr[$ii];
+#	$d = $dev_arr[$ii];
+	$d = round($dev_arr[$ii]);
 	$totalDev += $d;
 	$totalOps += $o;
 
 echo "    <tr>
         <td>$areas[$ii] </td>
-        <td><b>$dev_arr[$ii]</b> - " . ${$lcDev}[$d]['question'] . " </td>
-        <td><b>$ops_arr[$ii]</b> - " . ${$lcOps}[$o]['question'] . " </td>
+        <td><b>$dev_arr[$ii]</b> " . ${$lcDev}[$d]['question'] . " </td>
+        <td><b>$ops_arr[$ii]</b> " . ${$lcOps}[$o]['question'] . " </td>
     </tr>";        
 }    
   
@@ -710,8 +710,9 @@ array_push($workshops,$workshopLinks['AdaptiveSOE']);
 array_push($workshops,$workshopLinks['AnsibleAutomation']);
 }
 
-if ($ops_arr[0]  > 2) {
+if ($ops_arr[0]  >= 2) {
 	$automationAnalysis = "The Ops team provide good use of automation";
+	$automationRecommendation = "None";
 	if ($dev_arr[0] < 2) {
 		$automationAnalysis .= " although less automation is used by the Dev team";
 		$automationRecommendation = "Increase automation in the Dev team";
@@ -951,7 +952,7 @@ $allWorkshops = array(
 	  	"Environment" => "Agile Development Workshop",
 	),
 	"Operations" => array (
-	  	"Automation" => "Adaptive SOE and Ansible Automation",
+	  	"Automation" => "Adaptive SOE and increased automation",
 	  	"Methodology" => "Innovation Labs (Ops Focus)",
 	  	"Architecture" => "Application Lifecycle Management",
 	  	"Strategy" => "Open Source Strategy",
@@ -1025,14 +1026,6 @@ foreach ($data_array as $key => $val) {
 $query_string = implode('&', $url_parts);
 ?>
 <a href="resultsOpen.php?hash=<?php echo $hash ?>" target="_blank"><input type="button" value="Printable Version"></a>
-
-
-<!--
-<button id="open">Open Dialog box</button> 
-<div id="dialog" title="Basic dialog">
-<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
--->
 
 
 </div>

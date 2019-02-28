@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="Chart.bundle.js"></script>
-    <script src="utils.js"></script>
-    <script src="raphael-2.1.4.min.js"></script>
-    <script src="justgage.js"></script>
+    <script src="js/Chart.bundle.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/raphael-2.1.4.min.js"></script>
+    <script src="js/justgage.js"></script>
     <link rel="stylesheet" type="text/css" href="http://overpass-30e2.kxcdn.com/overpass.css"/>
     <title>Ready to Innovate Assessment</title>
 <style media="all">
@@ -388,18 +388,20 @@ Prepared for <?php echo $data_array['client']; ?>
 
 
 <h1>Red Hat Consulting Solution Delivery Framework</h1>
-<img src="images/image00.png" alt="Delivery Framework">
+<img src="images/discover-design-deploy.png" alt="Delivery Framework">
 <br>
-<p>Red Hat Consulting follows a repeatable framework for defining and implementing solutions with high value for our clients. That framework outlines a series of phases that each contribute to a clearly defined Client business driven goal. Red Hat Consulting aims to provide focused Client value across the areas of people, process, and technology, whilst also providing a supporting role in establishing bigger picture IT Transformation initiatives.</p>
+<p>Red Hat Consulting follows a repeatable framework for defining and implementing solutions with high value for our clients. That framework outlines a series of phases that each contribute to a clearly defined Client business driven goal. Red Hat Consulting aims to provide focused Client value across the areas of people, process, and technology, whilst also providing a supporting role in establishing bigger picture IT Transformation initiatives. </p>
  
-<p>Beginning with a Ready To Innovate Session, Red Hat helps you understand your As-Is IT Organisational State. The 5 axis of focus provide a way of outlining areas of accomplishment and improvement within the Operations and Development teams within your IT Organisation. The focus areas highlight the core foundations of Native Cloud platforms, Advanced Software Development techniques and most importantly Strategy and Culture. Used simply as a discussion point or more seriously as a means of highlighting future areas for investment, the RTI State graph represents a window into your Organisation. As part of the analysis Red Hat can guide and advise on follow up focus areas for investment and next steps. This short guide provides your custom next steps based on the wide base of Red Hat Consulting offerings available as part of our Service Delivery Framework.
-Following the RTI session, the next steps are defined within the follow on focused Discover phase, a focused “Discovery Session” aligned with an RTI defined topic provides an opportunity to drive into a defined area of investment in more detail, mapping business requirements, defining IT Organisational initiatives and engagement areas and assisting with strategy and approach. The Discovery Session is the starting point of a Red Hat Consulting engagement. The following report proposes your custom Discovery Session next steps based on your RTI State graph and chosen areas of IT investment.</p>
+<p>Beginning with a Ready To Innovate Session, Red Hat helps you understand your As-Is IT Organisational State. The 5 axis of focus provide a way of outlining areas of accomplishment and improvement within the Operations and Development teams within your IT Organisation. The focus areas highlight the core foundations of Native Cloud platforms, Advanced Software Development techniques and most importantly Strategy and Culture. Used simply as a discussion point or more seriously as a means of highlighting future areas for investment, the RTI State graph represents a window into your Organisation. As part of the analysis Red Hat can guide and advise on follow up focus areas for investment and next steps. This short guide provides your custom next steps based on the wide base of Red Hat Consulting offerings available as part of our Service Delivery Framework. 
+</p>
  
-<p>In the Design phase, we employ interactive workshops to rough out technologies, processes, and architectures; establish a strategy for your solution that integrates people, process, and technology; and build a backlog of tasks or use cases for prioritization. During the Deploy phase, we deliver 1 or more sprints or engagements to realize all or a portion of that strategy then deploy it within your environment.
-The Operate phase ensures that your Organisation is able to realise the true value of the Red Hat Consulting solution and technology. Critical to the ongoing maturity of your IT Organisation, Red Hat Consulting provide strategic partners to assist you in realising the value of our Open Source solutions and technologies.</p>
+<p>Following the RTI session, the next steps are defined within the follow on focused Discover phase, a focused “Discovery Session” aligned with an RTI defined topic provides an opportunity to drive into a defined area of investment in more detail, mapping business requirements, defining IT Organisational initiatives and engagement areas and assisting with strategy and approach. The Discovery Session is the starting point of a Red Hat Consulting engagement. This guide also proposes your custom Discovery Session next steps based on your RTI State graph and chosen areas of IT investment. 
+</p>
 
-<p>The RTI driven Discover, Design, Deploy, Operate solution progression is complemented by our unique mentoring and collaboration approach as well as Red Hat Training offerings to better engage and accelerate client participation, uptake, and success. Finally, we do all of this within an iterative framework that builds on prior efforts to evolve capabilities alongside your business or to deliver complex, multi-technology solutions.</p>
+<p>In the Design phase, we employ interactive workshops to rough out technologies, processes, and architectures; establish a strategy for your solution that integrates people, process, and technology; and build a backlog of tasks or use cases for prioritization. During the Deploy phase, we deliver 1 or more sprints or engagements to realize all or a portion of that strategy then deploy it within your environment.</p>
 
+<p>The RTI driven Discover, Design, Deploy solution progression is complemented by our unique mentoring and collaboration approach as well as Red Hat Training offerings to better engage and accelerate client participation, uptake, and success. Finally, we do all of this within an iterative framework that builds on prior efforts to evolve capabilities alongside your business or to deliver complex, multi-technology solutions.
+</p>
 
 <h1>RTI Output Summary</h1>
 <p>The spider chart below shows the levels attained by <?php echo $data_array['client']; ?> during the Ready To Innovate Assessment:
@@ -523,7 +525,7 @@ var data = {
     label: "Average",
     backgroundColor: "rgba(177, 177, 53, 1)",
     data: <?php 
-    $qq = "select avg(d1) as d1,avg(d2) as d2, avg(d3) as d3, avg(d4) as d4, avg(d5) as d5 from data;";    
+    $qq = "select ROUND(avg(d1),2) as d1, ROUND(avg(d2),2) as d2, ROUND(avg(d3),2) as d3, ROUND(avg(d4),2) as d4, ROUND(avg(d5),2) as d5 from data;";    
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
     $row = mysqli_fetch_array($res);
      echo "[" . $row[0] . "," . $row[1] . "," . $row[2] . "," . $row[3] . "," . $row[4] . "]"; 
@@ -564,7 +566,8 @@ var dataOps = {
     label: "Average",
     backgroundColor: "rgba(177, 177, 53, 1)",
     data: <?php 
-    $qq = "select avg(o1) as d1,avg(o2) as d2, avg(o3) as d3, avg(o4) as d4, avg(o5) as d5 from data;";    
+    #$qq = "select avg(o1) as d1,avg(o2) as d2, avg(o3) as d3, avg(o4) as d4, avg(o5) as d5 from data;";    
+    #$qq = "select ROUND(avg(o1),2) as o1, ROUND(avg(o2),2) as o2, ROUND(avg(o3),2) as o3, ROUND(avg(o4),2) as o4, ROUND(avg(o5),2) as o5 from data;";    
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
     $row = mysqli_fetch_array($res);    
      echo "[" . $row[0] . "," . $row[1] . "," . $row[2] . "," . $row[3] . "," . $row[4] . "]"; 
@@ -717,12 +720,14 @@ for ($ii = 0; $ii < 5; $ii++) {
 	$lcArea=strtolower($areas[$ii]);
 	$lcDev=$lcArea."_dev_array";
 	$lcOps=$lcArea."_ops_array";
-	$o = $ops_arr[$ii];
+	##$o = $ops_arr[$ii];
+	$o = round($ops_arr[$ii]);
 	$weighting['Operations_'. $areas[$ii]] = $ops_arr[$ii]+1 * $areaWeighting[$ii];
 	$weighting['Development_'. $areas[$ii]] = $dev_arr[$ii]+1 * $areaWeighting[$ii];
 	$oWeight[$areas[$ii]] = $ops_arr[$ii] * $areaWeighting[$ii];
 	$dWeight[$areas[$ii]] = $dev_arr[$ii] * $areaWeighting[$ii];
-	$d = $dev_arr[$ii];
+	#$d = $dev_arr[$ii];
+	$d = round($dev_arr[$ii]);
 	$totalDev += $d;
 	$totalOps += $o;
 
@@ -807,7 +812,8 @@ array_push($workshops,$workshopLinks['AnsibleAutomation']);
 
 if ($ops_arr[0]  > 2) {
 	$automationAnalysis = "The Ops team provide good use of automation";
-	if ($dev_arr[0] < 2) {
+		$automationRecommendation = "None";
+		if ($dev_arr[0] < 2) {
 		$automationAnalysis .= " although less automation is used by the Dev team";
 		$automationRecommendation = "Increase automation in the Dev team";
 		array_push($workshops,$workshopLinks['BusinessAutomation']);		

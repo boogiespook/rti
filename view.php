@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-if ( (!isset($_GET['key'])) || ($_GET['key'] != "XXXXXXXXXXXXXXXXXXXX")) {
+if ( (!isset($_GET['key'])) || ($_GET['key'] != "XXXXXXXXXXXXXXXXX")) {
 exit("Unable to connect to site");
 }
 
@@ -128,6 +128,8 @@ able {
 ## Database stuff
 include 'dbconnect.php';
 connectDB();
+#phpinfo();
+
 ?>
                    <table class="bordered">
     <thead>
@@ -158,7 +160,36 @@ if ($newScore != $oldScore && $oldClient == $newClient) {
 	}
 return $str;
 }
-$qq = "SELECT * FROM data ORDER BY client,date DESC";
+
+## Check if we have any vars - if so, use them in the search criteria
+
+parse_str(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY), $queries);
+$qq = "SELECT * FROM data ";
+
+if (isset($queries['country'])) {
+	$country = $queries['country'];
+}
+
+if (isset($queries['lob'])) {
+	$lob = $queries['lob'];
+}
+
+if (isset($country) && isset($lob)) {
+$qq .= " where country = '" . $country . "' and lob = '" . $lob . "'";
+}
+
+if (isset($lob) && !isset($country)) {
+$qq .= " where lob = '" . $lob . "'";
+}
+
+if (!isset($lob) && isset($country)) {
+$qq .= " where country = '" . $country . "'";
+}
+
+
+$qq .= " ORDER BY date DESC";
+
+
 $result = mysqli_query($GLOBALS["___mysqli_ston"], $qq);
 $prevClient = "QQQQQQQQQQQQQQQQQ";
 $oldRowD1 = $oldRowD2 = $oldRowD3 = $oldRowD4 = $oldRowD5 = $oldRowO1 = $oldRowO2 = $oldRowO3 = $oldRowO4 = $oldRowO5 = "X";

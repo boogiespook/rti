@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+#phpinfo();
 function generate_my_uuid() {
 	return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
 		mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
@@ -15,7 +15,7 @@ if(isset($_SESSION['usr_id'])) {
 	header("Location: index.php");
 }
 
-require_once 'securimage/securimage.php';
+#require_once 'securimage/securimage.php';
 include 'dbconnect.php';
 connectDB();
 
@@ -48,21 +48,46 @@ if (isset($_POST['signup'])) {
 	}
 
 
-    $image = new Securimage();
-    if ($image->check($_POST['captcha_code']) != true) {
-	   $error = true;
-	   $captcha_error = "Captcha entry incorrect";
-    }
-	
-	
-	if (!$error) {
+#    $image = new Securimage();
+#    if ($image->check($_POST['captcha_code']) != true) {
+#	   $error = true;
+#	   $captcha_error = "Captcha entry incorrect";
+#    }
+
+
+## validate
+$curl = curl_init();
+
+// Configure options, incl. post-variables to send.
+curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
+    CURLOPT_POST => 1,
+    CURLOPT_POSTFIELDS => array(
+        'secret' => '6LdWYl0UAAAAAF-OOWcmOaFeiBFamk36-G6BVAHq',
+        'response' => $_POST['g-recaptcha-response']
+    )
+));
+
+// Send request. Due to CURLOPT_RETURNTRANSFER, this will return reply as string.
+$resp = curl_exec($curl);
+
+// Free resources.
+curl_close($curl);
+
+// Validate response
+if(strpos($resp, '"success": true') !== FALSE) {
+#    echo "Verified.";
 		$qq = "INSERT INTO users(name,email,password,uuid) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "',uuid())	";
-		if(mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO users(name,email,password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) {
+#		print "Query: $qq";
+		if(mysqli_query($GLOBALS["___mysqli_ston"], $qq )) {
 			$successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
 		} else {
 			$errormsg = "Error in registering...Please try again later!";
 		}
-	}
+
+} 
+
 }
 ?>
 
@@ -72,6 +97,8 @@ if (isset($_POST['signup'])) {
 	<title>RTI Registration</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 <body>
 
@@ -128,10 +155,10 @@ if (isset($_POST['signup'])) {
 						<span class="text-danger"><?php if (isset($cpassword_error)) echo $cpassword_error; ?></span>
 					</div>
     <div>
-        <?php echo Securimage::getCaptchaHtml() ?>
+        <?php #echo Securimage::getCaptchaHtml() ?>
         						<span class="text-danger"><?php if (isset($captcha_error)) echo "<br>$captcha_error"; ?></span>
     </div>
-
+<div class="g-recaptcha" data-sitekey="XXXXXXXXXXXXX"></div>
 					<div class="form-group">
 						<input type="submit" name="signup" value="Sign Up" class="btn btn-primary" />
 					</div>

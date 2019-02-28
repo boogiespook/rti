@@ -102,7 +102,7 @@ h3 { color: #7c795d; font-family: 'overpass', sans-serif; font-size: 28px; font-
     
 </head>
 <body>
-<?php include_once("analyticstracking.php") ?>  
+<?php # include_once("analyticstracking.php") ?>  
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
