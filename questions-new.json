@@ -3,7 +3,7 @@
     "automation": {
       "1": {
         "question": "Ad-hoc tools to build & deploy",
-        "description": "No standard corporate wide tools used for automation.  Development team download various tools from the internet."
+        "description": "No standard corporate wide tools used for automation.  Development teams download various tools from the internet."
       },
       "2": {
         "question": "Automated builds (CI) + manual deployments with standardized procedures",
