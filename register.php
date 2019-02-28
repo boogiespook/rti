@@ -64,7 +64,7 @@ curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
     CURLOPT_POST => 1,
     CURLOPT_POSTFIELDS => array(
-        'secret' => 'XXXXXXXX',
+        'secret' => '6LdWYl0UAAAAAF-OOWcmOaFeiBFamk36-G6BVAHq',
         'response' => $_POST['g-recaptcha-response']
     )
 ));
@@ -98,7 +98,7 @@ if(strpos($resp, '"success": true') !== FALSE) {
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -113,6 +113,7 @@ if(strpos($resp, '"success": true') !== FALSE) {
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.php"><img src="images/innovate.png">  Ready to Innovate?</a>
+			<div id="smallVersion">v2.0</div>
 		</div>
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">
@@ -158,7 +159,7 @@ if(strpos($resp, '"success": true') !== FALSE) {
         <?php #echo Securimage::getCaptchaHtml() ?>
         						<span class="text-danger"><?php if (isset($captcha_error)) echo "<br>$captcha_error"; ?></span>
     </div>
-<div class="g-recaptcha" data-sitekey="XXXXXXXXXXXXX"></div>
+<div class="g-recaptcha" data-sitekey="6LdWYl0UAAAAAP8dt8bpKnfqtWKpAZ8bnNHK09-b"></div>
 					<div class="form-group">
 						<input type="submit" name="signup" value="Sign Up" class="btn btn-primary" />
 					</div>

@@ -32,6 +32,7 @@ connectDB();
 	<title>Ready to Innovate?</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -46,6 +47,7 @@ connectDB();
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="assess.php"><img src="images/innovate.png">  Ready to Innovate?</a>
+			<div id="smallVersion">v2.0</div>
 		</div>
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">

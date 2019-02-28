@@ -7,13 +7,13 @@ session_start();
 	<title>Ready to Innovate?</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"/>
-	<link rel="stylesheet" type="text/css" href="http://overpass-30e2.kxcdn.com/overpass.css"/>
+<link rel="stylesheet" type="text/css" href="http://overpass-30e2.kxcdn.com/overpass.css"/>
 <link rel="stylesheet" href="css/style.css" />
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
   <script>
   $( function() {
@@ -26,78 +26,7 @@ session_start();
     $( "input" ).checkboxradio();
   } );
   </script>
-  
-  <style>
-      #locationField, #controls {
-        position: relative;
-        width: 480px;
-      }
-      #autocomplete {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 99%;
-      }
-      .label {
-        text-align: right;
-        font-weight: bold;
-
-        color: #303030;
-      }
-      #address {
-        border: 1px solid #000090;
-        background-color: #f0f0ff;
-        width: 480px;
-        padding-right: 2px;
-      }
-      #address td {
-        font-size: 10pt;
-      }
-      .field {
-        width: 99%;
-      }
-      .slimField {
-        width: 80px;
-      }
-      .wideField {
-        width: 200px;
-      }
-      #locationField {
-        height: 20px;
-        margin-bottom: 2px;
-      }
-      .page { position: absolute; 
-      	top: 10; 
-      	left: 100; 
-      	visibility: hidden; 
-      	} 
-      	
-legend {
-
-}
-
-p { font-family: 'overpass', sans-serif; line-height: 28px; margin-bottom: 15px; color: #666; }
-
-
-
-label {
-
-    display:inline-block;
-}
-input {
-  border-radius: 15px;
-  margin: 10px;
-} 	
-
-h3 { color: #7c795d; font-family: 'overpass', sans-serif; font-size: 28px; font-weight: 400; line-height: 32px; margin: 0 0 24px; }
-
-
-
-    </style>		
-    
-
-    
-    
+     
 </head>
 <body>
 <?php # include_once("analyticstracking.php") ?>  
