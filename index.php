@@ -11,9 +11,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"/>
 	<link rel="stylesheet" type="text/css" href="http://overpass-30e2.kxcdn.com/overpass.css"/>
-
-<!--	<script src="js/jquery-1.10.2.js"></script>-->
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="css/style.css" />
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
@@ -113,7 +111,8 @@ h3 { color: #7c795d; font-family: 'overpass', sans-serif; font-size: 28px; font-
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.php"><img src="images/innovate.png">  Ready to Innovate?</a>
-		</div>
+			<div id="smallVersion">v2.0</div>
+			</div>
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
 				<?php if (isset($_SESSION['usr_id'])) { ?>

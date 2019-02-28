@@ -49,6 +49,7 @@ $("#input").slider({
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.php"><img src="images/innovate.png">  Ready to Innovate?</a>
+			<div id="smallVersion">v2.0</div>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
