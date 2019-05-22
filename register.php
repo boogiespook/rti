@@ -64,7 +64,7 @@ curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
     CURLOPT_POST => 1,
     CURLOPT_POSTFIELDS => array(
-        'secret' => '6LdWYl0UAAAAAF-OOWcmOaFeiBFamk36-G6BVAHq',
+        'secret' => 'XXXXXXXXXXXXXXXXXXXXXXX',
         'response' => $_POST['g-recaptcha-response']
     )
 ));
