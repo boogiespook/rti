@@ -482,7 +482,7 @@ Ready to Innivate is a 45 minute assessment answering questions to evaluate the 
 		As systems expand, you need to effectively manage your IT environment so all the parts work together to get the quickest return on investment (ROI). This covers the long term architectural motivations, aims, and advances to your current state architecture.
 		</td>
 		<td class="leftText">
-		Defining a vision and a strategy is one of the most challenging areas for an organization. Often, the ability to interpret and translate business ideas to solutions can be complex an involves input from leadership at all levels.
+		Defining a vision and a strategy is one of the most challenging areas for an organization. Often, the ability to interpret and translate business ideas to solutions can be complex and involves input from leadership at all levels.
 		</td>
 		<td class="leftText">
 		Environment is defined as the mixture of staff, culture, training, and skill level within an organisation.
