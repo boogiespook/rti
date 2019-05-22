@@ -47,6 +47,7 @@
 .slider.slider-horizontal {
   width: 100%;
   height: 20px;
+  margin-left: 0px;
 }
 .slider.slider-horizontal .slider-track {
   height: 10px;
@@ -266,6 +267,24 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   border: 0px solid transparent;
 }
+
+.slider-handleOps {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+  background-image: -o-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+  background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+  filter: none;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  border: 0px solid transparent;
+}
+
 .slider-handle:hover {
   cursor: pointer;
 }

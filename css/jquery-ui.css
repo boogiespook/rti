@@ -115,6 +115,7 @@
 	margin: 0;
 	display: block;
 	outline: 0;
+	max-height: 400px !important;
 }
 .ui-menu .ui-menu {
 	position: absolute;
@@ -178,7 +179,7 @@
 	user-select: none;
 
 	/* Support: IE <= 11 */
-	overflow: visible;
+	overflow: auto;
 }
 
 .ui-button,
@@ -933,8 +934,8 @@ html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
 	border: 1px solid #c5c5c5;
 	font-weight: normal;
-	color: #454545;
-	border-radius: 20px;
+/*	color: #454545;
+	border-radius: 20px; */
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -955,10 +956,10 @@ a:visited.ui-button,
 .ui-button:hover,
 .ui-button:focus {
 	border: 1px solid #cccccc;
-	background: #c5c5c5;
+/*	background: #c5c5c5;
 	font-weight: normal;
 	color: #2b2b2b;
-	border-radius: 20px;
+	border-radius: 20px; */
 	}
 .ui-state-hover a,
 .ui-state-hover a:hover,

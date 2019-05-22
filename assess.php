@@ -1,7 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION['usr_name'])) {
+header("Location: login.php");
+}
+
 include('functionPutFieldsets.php');
-#phpinfo();
 ?>
 
 <!DOCTYPE html>
@@ -9,32 +12,56 @@ include('functionPutFieldsets.php');
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="https://overpass-30e2.kxcdn.com/overpass.css"/>
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="css/bootstrap-slider.css" type="text/css" />
 <link rel="stylesheet" href="css/jquery-ui.css">
 <link rel="stylesheet" href="css/jquery.qtip.css" />
+<link rel="stylesheet" href="css/bootstrap-slider.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+<link href="css/bootstrap-toggle.min.css" rel="stylesheet">
 
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>$.fn.slider = null</script>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script src="js/jquery.qtip.min.js"></script>
+<script>$.fn.slider = null</script>  
 <script src="js/bootstrap-slider.js"></script>  
-  
+<script src="js/bootstrap-toggle.min.js"></script>
+
+
 <script type="text/javascript" >
   $( function() {
 $("#input").slider({
     ticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
     ticks_labels: ['0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'],
     step: "0.5",
+    id: 'sliderCol',
     min: 0,
     max: 6,
     value: 0,
     tooltip: "show",
+    rangeHighlights: [{ "start": 0, "end": 2, "class": "category1"},
+                      { "start": 2, "end": 3.5, "class": "category2"},
+                      { "start": 3.5, "end": 5, "class": "category3"}
+							]});
 });
-  } );
 </script>
+  <script>
+//  $( function() {
+//    $( "input" ).checkboxradio();
+//  } );
+  </script>
+
+  <script>
+  $( function() {
+    $( document ).tooltip();
+  } );
+  </script>
+  <style>
+  label {
+    display: inline-block;
+    width: 5em;
+  }
+  </style>
 
 </head>
 <body>
@@ -49,132 +76,172 @@ $("#input").slider({
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.php"><img src="images/innovate.png">  Ready to Innovate?</a>
-			<div id="smallVersion">v2.0</div>
+			<div class="smallVersion">v2.0</div>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
-								<li><a href="#">Signed in as Chris Jenkins</a></li>
-				<li><a href="passwd.php">Change Password</a></li>
+				<?php if (isset($_SESSION['usr_id'])) { ?>
+				<li><a href="assess.php">Run Assessment</a></li>
+				<li><p class="navbar-text">Signed in as <?php echo $_SESSION['usr_name']; ?></p></li>
 				<li><a href="logout.php">Log Out</a></li>
 				<li><a href="blog">Blog</a></li>
-				
+				<?php } else { ?>
+				<li><a href="register.php">Register</a></li>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="blog">Blog</a></li>
+
+				<?php } ?>
+
 			</ul>
 		</div>
 	</div>
 </nav>
-    <div class="container">
+    <div class="container-fluid">
     
 
 <form id="regForm" action="tmp.php">
-  <h1>Ready To Innovate</h1>
+
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
-  <h3>Welcome to the "Ready to Innovate?" Assessment.</h3>
+  <h3>Welcome to the "Ready to Innovate?" Assessment</h3>
 
-<p class="mainText">
-By the end of this assessment you will:
-<ul>
-<li  class="mainText">    Understand the wider issues around Digital Transformation, Platform-As-a-Service and DevOps adoption in parallel with technical PoCs or pilots.
-    <li class="mainText">Understand the maturity of your organization across five outlined areas of interest:
-    <ul>
-        <li class="mainText">Automation
-        <li class="mainText">Methodology
-        <li class="mainText">Architecture
-        <li class="mainText">Strategy
-        <li class="mainText">Environment
-        </ul>
-    <li class="mainText">Walk away with next steps and recommended follow-up sessions from Red Hat Consulting to dive deep into the challenges and opportunities that face your business.
-    </ul>
-<br>
+<p class="blackWelcomeText">
+Ready to Innovate is a web based tool to get an understanding of the current state of your development and operational teams' capabilities that contribute towards software delivery performance and your organisation's strategic goals and objectives.</p>
+
+<p class="blackWelcomeText">
+The assessment considers levels of capability that fall within five areas of interest:
+</p>
+ <ul>
+<li>
+	Automation
+</li>
+<li>
+	Way of Working
+</li>
+<li>
+Architecture
+</li>
+<li>
+Vision and Leadership
+</li>
+<li>
+Environment
+</li>
+</ul>
+<!-- <div class="leftTable">
+<table>
+<tr><td><img src="images/automation.png"></td><td>Automation</td></tr>
+<tr><td><img src="images/wayOfWorking.png"></td><td>Way of Working</td></tr>
+<tr><td><img src="images/architecture.png"></td><td>Architecture</td></tr>
+<tr><td><img src="images/visionLeadership.png"></td><td>Vision and Leadership</td></tr>
+<tr><td><img src="images/environment2.png"></td><td>Environment</td></tr>
+</table>
+</div>
+ --><br>
+<p class="blackWelcomeText">
+Following completion of the assessment, you will be provided with a set of next steps and recommendations that support more in-depth follow up workshops into the challenges and opportunities that face your business.</p>
+<p class="blackWelcomeText">
+
+<p class="blackWelcomeText">
+The assessment is mainly based on the integration, processes and methods used by both development and operations teams. To provide a more holistic overview, include members of other teams such as security, testing and business owners.</p>
+</p>
   </div>
   <div class="tab"><h4>Customer Details</h4>
     <p><input placeholder="Client Name" oninput="this.className = ''" name="customerName" ></p>
     <p><input placeholder="Email Address" oninput="this.className = ''" name="rhEmail"  ></p>
+    <p><input placeholder="Project/Team" oninput="this.className = ''" name="project"  ></p>
+<!-- <label class="checkbox-inline">
+  <input type="checkbox" class="shareBox" name="share" id="share" checked> Do you agree that the anonymous results can be used for comparative purposes?
+
+ </label>
+ --><p>Do you agree that the anonymous results can be used for comparative purposes?</p>
+
+<input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" name="share" id="share" data-size="normal" data-onstyle="success"  data-offstyle="danger" checked>
+    <p class="mainTextItalic">Note: comparisons are only available if you opt-in to share data</p>
+<p>Please select Country and Line of Business using the drop down lists</p>
 <?php putCountries();?>
 
 <?php putLoBs();?>
     
-  </p>
-<br> 
- 
   </div>
   
 <?php
-function printQuestionsOps($type,$number,$area) {
-$string = file_get_contents("questions-new.json");
+
+function printQuestions($title,$area) {
+$string = file_get_contents("questionsV2.json");
 $json = json_decode($string, true);
 $i=1;
-$initial = $type[0];
-
-print '<div class="divTable">   <h4>' . ucfirst($type) . '</h4>
-
+$qnum = $json[$area]['qnum'];
+print '<div class="floatingImage"><img src="images/' . $area . '.png"></div>';
+#print '<div  id="accordion"><img src="images/' . $area . '.png"></div>';
+print '   <h2>' . $title . '</h2><b>' . $json[$area]['overview'] . '</b>
+<br><br><p>Click on a text block below to show more information</p>
+<div class="divTable" id="zebra">
 <div class="divTableBody">
 <div class="divTableRow">';
 
 while( $i < 6) {
-
-	print '<div class="divTableCell"><p class="mainText"><b>' . $i . ') </b>' . $json[$type][$area][$i]['question'] . "</p>";
-	if ($json[$type][$area][$i]['description'] != "XXX") {
-		print '<a href="#" title="' . $json[$type][$area][$i]['description'] . '">More Detail</a>';
+	
+	if($i % 2 == 0){
+	print '<div class="divTableCell">';	
+	} else {
+	print '<div class="dark">';	
 	}
-	print "</div>";
+#	$sum = $i . '-details';
+	$sum = $i . '-summary';
+print '<b>Level ' . $i . ' </b>'; 
+print "<details>";
+print '<summary>' . $json[$area][$i] . "</summary>";
+print '<div class="detailsPane">' . $json[$area]["$sum"] . '</div>';
+print "</details>";
+print "</div>";
 $i++;
 }
+
+
 print '</div>
 </div>';
 print '</div>';
-print '<input class="slider" type="range" data-slider-value="1"  name="' . $initial . $number . '" type="text" />';
-}
-
-
+print "<hr><h4 class='headerCentered'>Development</h4>";
+print '<input data-slider-id="sliderCol" class="slider" type="range" data-slider-value="1"  name="d' . $qnum . '" type="text" data-slider-rangeHighlights=[{ "start": 0, "end": 2, "class": "category1" }, { "start": 2, "end": 3.5, "class": "category2" }, { "start": 3.5, "end": 5, "class": "category3" }] />';
+print "
+<h4 class='headerCentered'>Operations</h4>";
+print '<input data-slider-id="sliderCol" class="slider" type="range" data-slider-value="1"  name="o' . $qnum . '" type="text" data-slider-rangeHighlights=[{ "start": 0, "end": 2, "class": "category1" }, { "start": 2, "end": 3.5, "class": "category2" }, { "start": 3.5, "end": 5, "class": "category3" }] />';
+print "<br>";
+print "<h4>Notes</h4>";
+print '<textarea form=regForm name="comments_' . $area . '" id="comments_' . $area . ' wrap="soft" rows="2"></textarea>';
+};
 
 ?>  
   
   <div class="tab">
-  <h2>Automation</h2>
-  <h4> Change is the new constant and agile business practices are key to remaining competitive. Automation is often the space most influenced by our technology and methodology. </h4>
-<!--  <h3>Development</h3>-->
-<?php printQuestionsOps("development",1,"automation");  ?>
-<!--  <h3>Operations</h3>-->
-<?php printQuestionsOps("operations",1,"automation");  ?>
+<?php printQuestions("Automation","automation");  ?>
   </div>
 
   <div class="tab">
-  <h2>Methodology</h2>
-  <h4> In today’s market, large organizations must rely on more than just technology and tools. In this section, methodology refers to the way in which you are running your IT projects</h4>
-<!--  <h3>Development</h3>-->
-<?php printQuestionsOps("development",2,"methodology");  ?>
-<!--  <h3>Operations</h3>-->
-<?php printQuestionsOps("operations",2,"methodology");  ?>
+<?php printQuestions("Way of Working","wayOfWorking");  ?>
   </div>
 
   <div class="tab">
-  <h2>Architecture</h2>
-  <h4> As systems expand, you need to effectively manage your IT environment so all the parts work together to get the quickest return on investment (ROI). The following questions cover the long term architectural motivations, aims, and advances to your current state architecture</h4>
-<!--  <h3>Development</h3>-->
-<?php printQuestionsOps("development",3,"architecture");  ?>
-<!--  <h3>Operations</h3>-->
-<?php printQuestionsOps("operations",3,"architecture");  ?>
+<?php printQuestions("Architecture","architecture");  ?>
   </div>
 
   <div class="tab">
-  <h2>Strategy</h2>
-  <h4> Defining a strategy is one of the most challenging areas for an organization. Often, the ability to interpret and translate business ideas to solutions can be complex</h4>
-<!--  <h3>Development</h3>-->
-<?php printQuestionsOps("development",4,"strategy");  ?>
-<!--  <h3>Operations</h3>-->
-<?php printQuestionsOps("operations",4,"strategy");  ?>
+<?php printQuestions("Vision and Leadership","visionLeadership");  ?>
   </div>
 
   <div class="tab">
-  <h2>Environment</h2>
-  <h4> In this section, environment is defined as the mixture of staff, culture, training, and skill level within each area</h4>
-<!--  <h3>Development</h3>-->
-<?php printQuestionsOps("development",5,"environment");  ?>
-<!--  <h3>Operations</h3>-->
-<?php printQuestionsOps("operations",5,"environment");  ?>
+<?php printQuestions("Environment","environment");  ?>
   </div>
 
+
+
+  <div class="tab">
+<h2>Discussion Points</h2>
+  <h4> Please add any discussion points or other information here</h4>
+<br>
+<textarea form=regForm name="comments" id="comments" wrap="soft" rows="20"></textarea>
+  </div>
 
   <div style="overflow:auto;">
     <div style="float:right;">
@@ -191,7 +258,8 @@ print '<input class="slider" type="range" data-slider-value="1"  name="' . $init
     <span class="step"></span>
     <span class="step"></span>    
     <span class="step"></span>     
-     </div>
+    <span class="step"></span>     
+         </div>
 </form>
 
 <script>
@@ -387,5 +455,22 @@ $(".slider").slider({
 
   } );
   </script>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>  
+  
 </body>
 </html>

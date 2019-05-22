@@ -64,7 +64,7 @@ curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
     CURLOPT_POST => 1,
     CURLOPT_POSTFIELDS => array(
-        'secret' => 'XXXXXXXXXXXXXXXXXXX',
+        'secret' => '6LdWYl0UAAAAAF-OOWcmOaFeiBFamk36-G6BVAHq',
         'response' => $_POST['g-recaptcha-response']
     )
 ));
@@ -81,7 +81,7 @@ if(strpos($resp, '"success": true') !== FALSE) {
 		$qq = "INSERT INTO users(name,email,password,uuid) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "',uuid())	";
 #		print "Query: $qq";
 		if(mysqli_query($GLOBALS["___mysqli_ston"], $qq )) {
-			$successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
+			$successmsg = "<h2>Successfully Registered! <a href='login.php'>Click here to Login</a></h2>";
 		} else {
 			$errormsg = "Error in registering...Please try again later!";
 		}
@@ -97,6 +97,7 @@ if(strpos($resp, '"success": true') !== FALSE) {
 	<title>RTI Registration</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="https://overpass-30e2.kxcdn.com/overpass.css"/>
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -159,7 +160,7 @@ if(strpos($resp, '"success": true') !== FALSE) {
         <?php #echo Securimage::getCaptchaHtml() ?>
         						<span class="text-danger"><?php if (isset($captcha_error)) echo "<br>$captcha_error"; ?></span>
     </div>
-<div class="g-recaptcha" data-sitekey="XXXXXXXXXXXXXXXXXXXXXXXXXX"></div>
+<div class="g-recaptcha" data-sitekey="6LdWYl0UAAAAAP8dt8bpKnfqtWKpAZ8bnNHK09-b"></div>
 					<div class="form-group">
 						<input type="submit" name="signup" value="Sign Up" class="btn btn-primary" />
 					</div>

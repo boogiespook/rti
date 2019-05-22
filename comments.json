@@ -1,0 +1,137 @@
+{
+    "Automation" : {
+      "name" : "Automation",
+      "development" : {
+        "1" : "XXX",
+        "1-action" : "Automation Dev Action 1",
+        "2" : " ",
+        "2-action" : "Automation Dev Action 2",
+        "3" : "XXX",
+        "3-action" : "Automation Dev Action 3",
+        "4" : "XXX",
+        "4-action" : "Automation Dev Action 4",
+        "5" : "XXX",
+        "5-action" : "Automation Dev Action 5"
+        },
+    "operations" : {
+        "1" : "XXX",
+        "1-action" : "Create an initiative to understand and possibly optimise current manual tasks.<br>Research automation tools such as puppet and/or ansible.<br>Standardise tools for provisioning and patching.",
+        "2" : " ",
+        "2-action" : "Automation Ops Action 2",
+        "3" : "XXX",
+        "3-action" : "Automation Ops Action 3",
+        "4" : "XXX",
+        "4-action" : "Automation Ops Action 4",
+        "5" : "XXX",
+        "5-action" : "Automation Ops Action 5"
+        }
+      },
+    "WayOfWorking" : {
+      "name" : "Way of Working",
+      "development" : {
+        "1" : "XXX",
+        "1-action" : "Way of Working Dev Action 1",
+        "2" : " ",
+        "2-action" : "Way of Working Dev Action 2",
+        "3" : "XXX",
+        "3-action" : "Way of Working Dev Action 3",
+        "4" : "XXX",
+        "4-action" : "Way of Working Dev Action 4",
+        "5" : "XXX",
+        "5-action" : "Way of Working Dev Action 5"
+        },
+    "operations" : {
+        "1" : "XXX",
+        "1-action" : "Way of Working Ops Action 1",
+        "2" : " ",
+        "2-action" : "Way of Working Ops Action 2",
+        "3" : "XXX",
+        "3-action" : "Way of Working Ops Action 3",
+        "4" : "XXX",
+        "4-action" : "Way of Working Ops Action 4",
+        "5" : "XXX",
+        "5-action" : "Way of Working Ops Action 5"
+        }
+      },
+    "Architecture" : {
+      "name" : "Architecture",
+      "development" : {
+        "1" : "XXX",
+        "1-action" : "Architecture Dev Action 1",
+        "2" : " ",
+        "2-action" : "Architecture Dev Action 2",
+        "3" : "XXX",
+        "3-action" : "Architecture Dev Action 3",
+        "4" : "XXX",
+        "4-action" : "Architecture Dev Action 4",
+        "5" : "XXX",
+        "5-action" : "Architecture Dev Action 5"
+        },
+    "operations" : {
+        "1" : "XXX",
+        "1-action" : "Identify and document current architecture practices.<br>Identify configuration processes.<br>Identify technical debt across the estate.<br>Start work on creating a CMDB if not already present",
+        "2" : " ",
+        "2-action" : "Architecture Ops Action 2",
+        "3" : "XXX",
+        "3-action" : "Architecture Ops Action 3",
+        "4" : "XXX",
+        "4-action" : "Architecture Ops Action 4",
+        "5" : "XXX",
+        "5-action" : "Architecture Ops Action 5"
+        }
+      },
+    "VisionAndLeadership" : {
+      "name" : "Vision and Leadership",
+      "development" : {
+        "1" : "XXX",
+        "1-action" : "Vision and Leadership Dev Action 1",
+        "2" : " ",
+        "2-action" : "Vision and Leadership Dev Action 2",
+        "3" : "XXX",
+        "3-action" : "Vision and Leadership Dev Action 3",
+        "4" : "XXX",
+        "4-action" : "Vision and Leadership Dev Action 4",
+        "5" : "XXX",
+        "5-action" : "Vision and Leadership Dev Action 4"
+        },
+    "operations" : {
+        "1" : "XXX",
+        "1-action" : "Begin integration with teams outside of operations such a developers, security and testing teams.<br>Identify product owners who can help create better collaboration.<br>Discuss overall business objectivities with the operations team beyond purely technical requirements",
+        "2" : " ",
+        "2-action" : "Vision and Leadership Ops Action 2",
+        "3" : "XXX",
+        "3-action" : "Vision and Leadership Ops Action 3",
+        "4" : "XXX",
+        "4-action" : "Vision and Leadership Ops Action 4",
+        "5" : "XXX",
+        "5-action" : "Vision and Leadership Ops Action 5"
+        }
+      },
+    "Environment" : {
+      "name" : "Environment",
+      "development" : {
+        "1" : "XXX",
+        "1-action" : "Environment Dev Action 1",
+        "2" : " ",
+        "2-action" : "Environment Dev Action 2",
+        "3" : "XXX",
+        "3-action" : "Environment Dev Action 3",
+        "4" : "XXX",
+        "4-action" : "Environment Dev Action 4",
+        "5" : "XXX",
+        "5-action" : "Environment Dev Action 5"
+        },
+    "operations" : {
+        "1" : "XXX",
+        "1-action" : "Environment Ops Action 1",
+        "2" : " ",
+        "2-action" : "Environment Ops Action 2",
+        "3" : "XXX",
+        "3-action" : "Environment Ops Action 3",
+        "4" : "XXX",
+        "4-action" : "Environment Ops Action 4",
+        "5" : "XXX",
+        "5-action" : "Environment Ops Action 5"
+        }
+      }
+}

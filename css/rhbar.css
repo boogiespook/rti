@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#rhbar {
+	background-color: #202020;
+	height: 40px;
+}
+.rhlogo {
+	float: right;
+	background-image: url(https://static.jboss.org/images/rhbar/redhatlogo_reverse.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 85px;
+}
+.jbdevlogo {
+	float: right;
+	background-image: url(https://static.jboss.org/images/rhbar/rhd_reverse.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 136px;
+}
+ @media (max-width: 450px) {
+.jbdevlogo {
+}
+}
