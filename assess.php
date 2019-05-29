@@ -310,13 +310,17 @@ function validateForm() {
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
   // A loop that checks every input field in the current tab:
+  //console.log(y);
+
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-    if (y[i].value == "") {
+    // Project name isn't mandatory so skip that one
+    if (y[i].value == "" && i != 2) {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
-      valid = true;
+//      valid = true;
+      valid = false;
     }
   }
   // If the valid status is true, mark the step as finished and valid:

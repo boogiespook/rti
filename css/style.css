@@ -1,16 +1,21 @@
+@font-face {
+  font-family: redHatFont;
+  src: url(RedHatText-Regular.ttf);
+}
+
 *{
 	box-sizing:border-box;
-	font-family:'overpass';
+	font-family:'redHatFont';
 }
 body{
-	font:14px Overpass;
+	font:14px redHatFont;
 	margin:5px auto;
 	color:#444;
 }
 #regForm{
 	background-color:#fff;
 	border-radius:25px;
-	font-family:Overpass;
+	font-family:redHatFont;
 	padding:5px;
 	min-width:90%;
 }
@@ -37,7 +42,7 @@ h1{
 input{
 	padding:5px;
 	width:70%;
-	font:17px Overpass;
+	font:17px redHatFont;
 	border:1px solid #aaa;
 	border-radius:5px;
 }
@@ -230,7 +235,7 @@ button{
 	margin-top:10px;
 	color:#fff;
 	padding:20px;
-	font:17px Overpass;
+	font:17px redHatFont;
 	cursor:pointer;
 	border-radius:15px;
 }
@@ -258,7 +263,7 @@ button:hover{
 }
 .custom-select{
 	position:relative;
-	font-family:Overpass;
+	font-family:redHatFont;
 }
 .custom-select select{
 	display:none;
@@ -371,7 +376,7 @@ input.invalid{
 	background-color:#C0C0C0;
 	color:#fff;
 	border:none;
-	font:14px Overpass;
+	font:14px redHatFont;
 	cursor:pointer;
 	border-radius:15px;
 	text-decoration:none;
@@ -419,7 +424,7 @@ input.invalid{
 	visibility:hidden;
 }
 p{
-	font-family:'overpass',sans-serif;
+	font-family:'redHatFont',sans-serif;
 	color:#505050;
 }
 .questions{
@@ -430,7 +435,7 @@ label{
 }
 h3{
 	color:#7c795d;
-	font:400 28px/32px 'overpass',sans-serif;
+	font:400 28px/32px 'redHatFont',sans-serif;
 	margin:0 0 24px;
 }
 #browserWarning{
