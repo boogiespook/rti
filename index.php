@@ -45,6 +45,7 @@ session_start();
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
 				<?php if (isset($_SESSION['usr_id'])) { ?>
+				<li><a href="myrti.php">MyRTI</a></li>
 				<li><a href="assess.php">Run Assessment</a></li>
 				<li><p class="navbar-text">Signed in as <?php echo $_SESSION['usr_name']; ?></p></li>
 				<li><a href="logout.php">Log Out</a></li>
